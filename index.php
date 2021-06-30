@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="Views/Styles.css">
+    <link rel="stylesheet" href="Views/css/Styles.css">
     <script src="Controllers/script.js"></script>
     <title>M307 Projekt</title>
 </head>
@@ -20,8 +20,6 @@
     $statement = $pdo->prepare('SELECT * FROM packages');
     $statement->execute();
     $result = $statement->fetchAll();
-//    require("Models/CRUD.php");
-//    $result = getAllPackages();
     for ($i = 0; $i < count($result); $i++) {
         echo "<tr>";
             echo "<td>" . $result[$i]['packageName'] . "</td>";

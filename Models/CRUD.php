@@ -39,6 +39,17 @@ function getPackageName($packageID): string
     return $packageName[0][0];
 }
 
+function getRepayDate($startDate, $riskID) : string{
+    global $pdo;
+    $statement = $pdo->prepare('SELECT changeRentalDays FROM M307DB.riskRanking WHERE riskID = :riskID;');
+    $statement->bindValue(':riskID', $riskID);
+    $statement->execute();
+    $riskLevel = $statement->fetchAll();
+    $days = 480 + $riskLevel[0][0];
+    $start = new DateTime($startDate);
+    return date('d.m.Y', strtotime(date('d.m.Y', $start->getTimestamp()) .' + '.$days.' days'));
+}
+
 // CREATE
 
 function insertMortgage($firstName, $lastName, $email, $phoneNumber, $riskID, $packageID)
@@ -64,3 +75,27 @@ function insertMortgage($firstName, $lastName, $email, $phoneNumber, $riskID, $p
     $statement->closeCursor();
 }
 
+// UPDATE
+
+function updateMortgage($mortgageID, $firstName, $lastName, $email, $phoneNumber,$repaymentStatus, $packageID)
+{
+    global $pdo;
+    $query = "UPDATE `M307DB`.`mortgages` SET
+                        `firstName` = :firstName,
+                        `lastName` = :lastName,
+                        `email` = :email,
+                        `phoneNumber` = :phoneNumber,
+                        `repaymentStatus` = :repaymentStatus,
+                        `FK_packageID` = :packageID
+                        WHERE `mortgageID` = :mortgageID;";
+    $statement = $pdo->prepare($query);
+    $statement->bindValue(':mortgageID', $mortgageID);
+    $statement->bindValue(':firstName', $firstName);
+    $statement->bindValue(':lastName', $lastName);
+    $statement->bindValue(':email', $email);
+    $statement->bindValue(':phoneNumber', $phoneNumber);
+    $statement->bindValue(':repaymentStatus', $repaymentStatus);
+    $statement->bindValue(':packageID', $packageID);
+    $statement->execute();
+    $statement->closeCursor();
+}
