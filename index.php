@@ -10,15 +10,26 @@
     <title>M307 Projekt</title>
 </head>
 <body>
+<table id="package-list">
+    <tr>
+        <th>Paket</th>
+        <th>Prozentsatz</th>
+    </tr>
+    <?php
+    require("Models/database.php");
+    $statement = $pdo->prepare('SELECT * FROM packages');
+    $statement->execute();
+    $result = $statement->fetchAll();
+    for ($i = 0; $i < count($result); $i++) {
+        echo "<tr>";
+            echo "<td>" . $result[$i]['packageName'] . "</td>";
+            echo "<td>" . $result[$i]['percentage'] . "</td>";
+        echo"</tr>";
+    }
+    ?>
+</table>
 
-<?php
-require("Models/database.php");
-$statement = $pdo->prepare('SELECT * FROM user');
-$statement->execute();
-$result = $statement->fetchAll();
-for ($i = 0; $i < count($result); $i++) {
-    echo 'Hello ' . $result[$i]['firstName'] . " " . $result[$i]['lastName'] . "<br>";
-}
+
 
 ?>
 </body>
