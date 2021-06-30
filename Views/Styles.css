@@ -27,15 +27,15 @@ td {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #04AA6D;
     color: white;
 }
 
-#packages {
-
+#packages th {
+    background-color: #04AA6D;
 }
 
-#mortgages {
+#mortgages th {
+    background-color: #04aaaa;
 }
 
 

@@ -1,6 +1,8 @@
 <?php
 require ("database.php");
 
+// GET
+
 function getAllPackages(): array
 {
     global $pdo;
@@ -36,3 +38,29 @@ function getPackageName($packageID): string
     $packageName = $statement->fetchAll();
     return $packageName[0][0];
 }
+
+// CREATE
+
+function insertMortgage($firstName, $lastName, $email, $phoneNumber, $riskID, $packageID)
+{
+    global $pdo;
+    $query = "INSERT INTO M307DB.mortgages(firstName,lastName,email,
+                                 phoneNumber,startDate,repaymentStatus,
+                                 FK_riskID,FK_packageID) 
+                                 VALUES
+                                (:firstName,:lastName, :email,
+                                :phoneNumber,:startDate,
+                                :repaymentStatus,:riskID,:packageID);";
+    $statement = $pdo->prepare($query);
+    $statement->bindValue(':firstName', $firstName);
+    $statement->bindValue(':lastName', $lastName);
+    $statement->bindValue(':email', $email);
+    $statement->bindValue(':phoneNumber', $phoneNumber);
+    $statement->bindValue(':startDate', date('Y-m-d'));
+    $statement->bindValue(':repaymentStatus', 'Not Repaid');
+    $statement->bindValue(':riskID', $riskID);
+    $statement->bindValue(':packageID', $packageID);
+    $statement->execute();
+    $statement->closeCursor();
+}
+

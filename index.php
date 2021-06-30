@@ -53,9 +53,8 @@
         echo "<td>" . $mortgages[$i]['phoneNumber'] . "</td>";
         echo "<td>" . $mortgages[$i]['startDate'] . "</td>";
         echo "<td>" . $mortgages[$i]['repaymentStatus'] . "</td>";
-
-        echo "<td>" . getRiskLevel($mortgages[$i]['FK_riskID']) . "</td>"; // Risikostufe
-        echo "<td>" . getPackageName($mortgages[$i]['FK_packageID']) . "</td>"; // Risikostufe
+        echo "<td>" . getRiskLevel($mortgages[$i]['FK_riskID']) . "</td>";
+        echo "<td>" . getPackageName($mortgages[$i]['FK_packageID']) . "</td>";
         echo "</tr>";
     }
     ?>
