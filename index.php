@@ -10,7 +10,7 @@
     <title>M307 Projekt</title>
 </head>
 <body>
-<table id="package-list">
+<table id="packages" class="list">
     <tr>
         <th>Paket</th>
         <th>Prozentsatz</th>
@@ -20,17 +20,46 @@
     $statement = $pdo->prepare('SELECT * FROM packages');
     $statement->execute();
     $result = $statement->fetchAll();
+//    require("Models/CRUD.php");
+//    $result = getAllPackages();
     for ($i = 0; $i < count($result); $i++) {
         echo "<tr>";
             echo "<td>" . $result[$i]['packageName'] . "</td>";
-            echo "<td>" . $result[$i]['percentage'] . "</td>";
+            echo "<td>" . $result[$i]['percentage'] . " % </td>";
         echo"</tr>";
     }
     ?>
 </table>
 
+<table id="mortgages" class="list">
+    <tr>
+        <th>Vorname</th>
+        <th>Nachname</th>
+        <th>E-mail</th>
+        <th>Telefonnummer</th>
+        <th>Startdatum</th>
+        <th>Rückzahlungs-Status</th>
+        <th>Risikostufe</th>
+        <th>Paket</th>
+    </tr>
+    <?php
+    require("Models/CRUD.php");
+    $mortgages = getAllMortgages();
+    for ($i = 0; $i < count($mortgages); $i++) {
+        echo "<tr>";
+        echo "<td>" . $mortgages[$i]['firstName'] . "</td>";
+        echo "<td>" . $mortgages[$i]['lastName'] . "</td>";
+        echo "<td>" . $mortgages[$i]['email'] . "</td>";
+        echo "<td>" . $mortgages[$i]['phoneNumber'] . "</td>";
+        echo "<td>" . $mortgages[$i]['startDate'] . "</td>";
+        echo "<td>" . $mortgages[$i]['repaymentStatus'] . "</td>";
 
+        echo "<td>" . getRiskLevel($mortgages[$i]['FK_riskID']) . "</td>"; // Risikostufe
+        echo "<td>" . getPackageName($mortgages[$i]['FK_packageID']) . "</td>"; // Risikostufe
+        echo "</tr>";
+    }
+    ?>
+</table>
 
-?>
 </body>
 </html>

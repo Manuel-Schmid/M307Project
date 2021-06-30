@@ -5,7 +5,6 @@ $password = 'e507y';
 
 try {
     $pdo = new PDO($dsn, $username, $password);
-//    echo "success <br>";
 } catch (PDOException $e) {
     $error_message = 'Database Error: ';
     $error_message .= $e->getMessage();
