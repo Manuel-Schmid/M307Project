@@ -2,14 +2,17 @@
     background-color: #04aaaa;
     padding-left: 20px;
 }
-.menu-button {
-    width: 30%;
+.menu-bar {
+    width: 50%;
     background-color: #038a8a;
+    font-size: 20px;
     color: white;
-    font-size: 40px;
+    border: solid;
+    border-radius: 40px;
+    padding: 10px;
 }
 
-button:hover{
+a:hover{
     background-color: #04aaaa;
     color: white;
 }
@@ -28,11 +31,14 @@ button:hover{
     right: auto;
 }
 
-.selected-menue-button{
-    margin: 20px 20px 30px 20px;
-    color: darkgray;
-    font-size: 40px;
-
+.selected-menue-bar{
+    width: 50%;
+    background-color: #535353;
+    font-size: 20px;
+    color: white;
+    border: solid;
+    border-radius: 40px;
+    padding: 10px;
 }
 
 .tab-form{
