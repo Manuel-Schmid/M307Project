@@ -1,5 +1,5 @@
 .menu-button {
-    width: 30%;
+    width: 33%;
     background-color: #038a8a;
     color: white;
     font-size: 40px;
@@ -64,7 +64,7 @@ h1{
 }
 
 div{
-    margin: 10px;
+    width: 90%;
 }
 
 .h2-form-left{
