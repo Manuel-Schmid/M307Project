@@ -41,7 +41,7 @@ function getRiskLevel($riskID): string
 function getAllRiskLevels(): array
 {
     global $pdo;
-    $statement = $pdo->prepare('SELECT * FROM riskLevel');
+    $statement = $pdo->prepare('SELECT * FROM riskRanking');
     $statement->execute();
     return $statement->fetchAll();
 }

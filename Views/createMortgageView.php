@@ -115,20 +115,20 @@ require("../Models/CRUD.php");
 
         <label for="riskLevel">Risiko Level*</label>
         <select id="riskLevel" name="riskLevel">
-<!--            --><?php
-//            $riskLevels = getAllRiskLevels();
-//            for ($i = 0; $i < $riskLevels; $i++) {
-//                $val = $riskLevels[$i]['riskLevel'];
-//                echo "<option value ='$val'>" .$val. "% </option>";
-//            }
-//            ?>
+            <?php
+            $levels = getAllRiskLevels();
+            for ($i = 0; $i < count($levels); $i++) {
+                $val = $levels[$i]['riskLevel'];
+                echo "<option value ='$val'>" .$val. "</option>";
+            }
+            ?>
         </select><br>
 
         <label for="mortgagePackage">Hypothek Paket*</label>
         <select id="mortgagePackage" name="mortgagePackage">
             <?php
             $packages = getAllPackages();
-            for ($i = 1; $i < count($packages); $i++) {
+            for ($i = 0; $i < count($packages); $i++) {
                 $packageName = $packages[$i]['packageName'];
                 echo "<option value ='$packageName'>" .$packageName. "</option>";
             }
