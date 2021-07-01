@@ -10,27 +10,12 @@
     <title>M307 Projekt</title>
 </head>
 <body>
-<div class="text-center">
-    <a class="edit-btn menu-button" href="Views/existingMortgagesView.php">Bestehende Hypotheken</a>
+<div>
+    <h1 class="text-center">Hypothekarbank</h1>
+    <button class="menu-button text-center">Verleihe erfassen</button>
+    <button class="menu-button text-center">Bestehende Leihen</button>
+    <button class="menu-button text-center">Leihen bearbeiten</button>
 </div>
-<table id="packages" class="list">
-    <tr>
-        <th>Paket</th>
-        <th>Prozentsatz</th>
-    </tr>
-    <?php
-    require("Models/database.php");
-    $statement = $pdo->prepare('SELECT * FROM packages');
-    $statement->execute();
-    $result = $statement->fetchAll();
-    for ($i = 0; $i < count($result); $i++) {
-        echo "<tr>";
-            echo "<td>" . $result[$i]['packageName'] . "</td>";
-            echo "<td>" . $result[$i]['percentage'] . " % </td>";
-        echo"</tr>";
-    }
-    ?>
-</table>
 
 </body>
 </html>
