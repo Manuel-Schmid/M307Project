@@ -3,8 +3,8 @@ $noError = false;
 
 $errorList = [];
 
-$firstname = $_POST['firstname'] ?? '';
-$lastname = $_POST['lastname'] ?? '';
+$firstName = $_POST['firstname'] ?? '';
+$lastName = $_POST['lastname'] ?? '';
 $email = $_POST['email'] ?? '';
 $phone = $_POST['phone'] ?? '';
 $riskLevel = $_POST['riskLevel'] ?? '';
@@ -13,19 +13,19 @@ $mortgagePackage = $_POST['mortgagePackage'] ?? '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    $firstname = trim($firstname);
-    $lastname = trim($lastname);
+    $firstName = trim($firstName);
+    $lastName = trim($lastName);
     $email = trim($email);
     $phone = trim($phone);
     $riskLevel = trim($riskLevel);
     $mortgagePackage = trim($mortgagePackage);
 
 
-    if ($firstname === '') {
+    if ($firstName === '') {
         $errorList[] = 'Bitte geben Sie einen Vornamen ein.';
     }
 
-    if ($lastname === '') {
+    if ($lastName === '') {
         $errorList[] = 'Bitte geben Sie einen Nachname ein.';
     }
 
