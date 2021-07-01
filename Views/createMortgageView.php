@@ -81,7 +81,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php
 require("../Models/CRUD.php");
 ?>
-<h1>Erfassen einer neuen Hypothek</h1>
+<h1>Hypothekarbank</h1>
+<button class=""> Leihe erfassen </button>
+
+<button> </button>
 <br><br>
 
 <form action="" method="post">
@@ -98,7 +101,7 @@ require("../Models/CRUD.php");
         <input type="text" id="email" name="email"><br>
 
         <label for="phone">Telefon*</label>
-        <input type="number" id="phone" name="phone"><br>
+        <input type="text" id="phone" name="phone"><br>
     </fieldset>
     <fieldset>
         <legend>Hypothekangaben</legend>
@@ -114,7 +117,7 @@ require("../Models/CRUD.php");
             ?>
         </select><br>
 
-        <label for="mortgagePackage">Hypothek Paket*</label>
+        <label for="mortgagePackage">Hypothek Paket</label>
         <select id="mortgagePackage" name="mortgagePackage">
             <?php
             $var = count(getAllPackages());
