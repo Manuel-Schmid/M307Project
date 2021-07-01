@@ -37,8 +37,6 @@ button{
 
 .list tr:nth-child(even){background-color: #f2f2f2;}
 
-/*.list tr:hover {background-color: #ddd;}*/
-
 .list th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -90,7 +88,6 @@ a:hover{
 div{
     margin: 20px;
 }
-
 
 .selected-menue-bar{
     width: 50%;

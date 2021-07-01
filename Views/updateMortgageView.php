@@ -55,7 +55,6 @@ $mortgage = getMortgage($mortgageID);
         $(document).ready(function(){
             $('#firstName-btn').click(function(){
                 let inputValue = document.getElementById("firstName-input").value;
-                console.log(inputValue)
                 document.getElementById('firstName').innerText = inputValue;
                 // document.cookie="input=" + inputValue;
                 // window.location.href='updateMortgageView.php?input=' + inputValue;
@@ -80,7 +79,6 @@ $mortgage = getMortgage($mortgageID);
         $(document).ready(function(){
             $('#lastName-btn').click(function(){
                 let inputValue = document.getElementById("lastName-input").value;
-                console.log(inputValue)
                 document.getElementById('lastName').innerText = inputValue;
             });
         });
@@ -96,7 +94,6 @@ $mortgage = getMortgage($mortgageID);
         $(document).ready(function(){
             $('#email-btn').click(function(){
                 let inputValue = document.getElementById("email-input").value;
-                console.log(inputValue)
                 document.getElementById('email').innerText = inputValue;
             });
         });
@@ -112,7 +109,6 @@ $mortgage = getMortgage($mortgageID);
         $(document).ready(function(){
             $('#phoneNumber-btn').click(function(){
                 let inputValue = document.getElementById("phoneNumber-input").value;
-                console.log(inputValue)
                 document.getElementById('phoneNumber').innerText = inputValue;
             });
         });
@@ -128,7 +124,6 @@ $mortgage = getMortgage($mortgageID);
         $(document).ready(function(){
             $('#package-btn').click(function(){
                 let inputValue = document.getElementById("package-input").value;
-                console.log(inputValue)
                 document.getElementById('package').innerText = inputValue;
             });
         });
@@ -144,7 +139,6 @@ $mortgage = getMortgage($mortgageID);
         $(document).ready(function(){
             $('#repaymentStatus-btn').click(function(){
                 let inputValue = document.getElementById("repaymentStatus-input").value;
-                console.log(inputValue)
                 document.getElementById('repaymentStatus').innerText = inputValue;
             });
         });
@@ -161,6 +155,23 @@ $mortgage = getMortgage($mortgageID);
         <td></td>
         <td></td>
     </tr>
-
+    <tr class="noBorder">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button id="save" class="edit-btn">Alle speichern</button></td>
+    </tr>
+    <script>
+        $(document).ready(function(){
+            $('#save').click(function(){
+                document.getElementById('firstName').innerText = document.getElementById("firstName-input").value;
+                document.getElementById('lastName').innerText = document.getElementById("lastName-input").value;
+                document.getElementById('email').innerText = document.getElementById("email-input").value;
+                document.getElementById('phoneNumber').innerText = document.getElementById("phoneNumber-input").value;
+                document.getElementById('package').innerText = document.getElementById("package-input").value;
+                document.getElementById('repaymentStatus').innerText = document.getElementById("repaymentStatus-input").value;
+            });
+        });
+    </script>
 </body>
 </html>
