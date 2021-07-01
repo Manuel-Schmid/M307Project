@@ -14,7 +14,7 @@ function getAllPackages(): array
 function getAllMortgages(): array
 {
     global $pdo;
-    $statement = $pdo->prepare('SELECT * FROM mortgages');
+    $statement = $pdo->prepare('SELECT * FROM mortgages ORDER BY startDate ASC');
     $statement->execute();
     return $statement->fetchAll();
 }
