@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/existing-mortgages-styles.css">
+    <link rel="icon" href="../Media/favicon.ico" type="image/x-icon">
     <style> @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');</style>
     <title>Bestehende Hypotheken</title>
 </head>

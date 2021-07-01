@@ -18,8 +18,6 @@ body{
 
 h1{
     margin: 20px;
-    font-size: 80px;
-    text-align: center;
 }
 
 button{
@@ -52,13 +50,12 @@ button{
 
 .edit-btn {
     background-color: #038a8a;
-    border-radius: 20px;
-    border-color: #038a8a;
+    border: none;
     color: white;
+    padding: 8px 15px;
     text-align: center;
     text-decoration: none;
-
-
+    display: inline-block;
     /*font-size: 16px;*/
 }
 
@@ -78,32 +75,29 @@ nav{
     border: solid;
     border-radius: 20px;
     padding: 20px;
-    margin: auto;
+    margin: 20px;
     display: flex;
 }
 
 a:hover{
-    width:45%;
+    width: 45%;
     background-color: #04aaaa;
-    font-size: 20px;
+    font-size: 15px;
     color: white;
     border: solid;
     border-radius: 20px;
     padding: 5px;
-    text-decoration: none;
-    margin: auto;
 }
 
 a{
     width:45%;
     background-color: #038a8a;
-    font-size: 20px;
-    color: white;
+    font-size: 15px;
+    color: black;
     border: solid;
     border-radius: 20px;
     padding: 5px;
-    text-decoration: none;
-    margin: auto;
+
 }
 
 div{
@@ -111,13 +105,12 @@ div{
 }
 
 .selected-menue-bar{
-    width:45%;
-    background-color:darkgray;
+    width: 50%;
+    background-color: #535353;
     font-size: 20px;
-    color: black;
+    color: white;
     border: solid;
-    border-radius: 20px;
-    padding: 5px;
-    text-decoration:none;
-    margin: auto;
+    border-radius: 40px;
+    padding: 10px;
+
 }

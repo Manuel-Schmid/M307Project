@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/update-mortgage-styles.css">
     <script src="../Controllers/updateMortgageScript.js"></script>
+    <link rel="icon" href="../Media/favicon.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Hypothek bearbeiten</title>
 </head>
@@ -79,6 +80,7 @@ $mortgage = getMortgage($mortgageID);
         $(document).ready(function(){
             $('#lastName-btn').click(function(){
                 let inputValue = document.getElementById("lastName-input").value;
+                checkEmpty(inputValue, "Nachname");
                 document.getElementById('lastName').innerText = inputValue;
             });
         });
@@ -94,6 +96,8 @@ $mortgage = getMortgage($mortgageID);
         $(document).ready(function(){
             $('#email-btn').click(function(){
                 let inputValue = document.getElementById("email-input").value;
+                checkEmpty(inputValue, "E-Mail-Adresse");
+
                 document.getElementById('email').innerText = inputValue;
             });
         });

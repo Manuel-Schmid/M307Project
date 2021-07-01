@@ -66,6 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/create-mortgages-styles.css">
+    <link rel="icon" href="../Media/favicon.ico" type="image/x-icon">
     <title>Hypothek erfassen</title>
 </head>
 <body>
@@ -80,17 +81,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="wrapper">
     <?php
     require("../Models/CRUD.php");
+    require ("../Controllers/Utils.php");
     ?>
     <h2 class = "form-title text-center">Erfassen einer neuen Hypothek</h2>
     <?php if ($noError): ?>
-
         <p1 class=success>Speichern der Hypothek erfolgreich</p1>
-
     <?php else: ?>
-
-
-
-        <!-- SCHRITT 2 -->
         <?php if (count($errorList) > 0): ?>
             <ul class="errors">
                 <?php foreach ($errorList as $error): ?>
@@ -98,7 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>
-
     <?php endif; ?>
 
     <br><br>
@@ -153,6 +148,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </fieldset>
         <p>* sind Pflichfelder</p>
+
+        <fieldset>
+            <legend class="form-legend">Rückzahlung</legend>
+            <div class="form-group">
+                <label class="form-label" for="firstname">Rückzahlungs-Datum:
+                    <?php
+                    global $val;
+                    $startDate = new DateTime('now');
+                    $fdate = date('d.m.Y', $startDate->getTimestamp());
+                    echo getRepayDate($fdate, $val);
+
+//                    $fdate = formatDate($date);
+//                    echo getRepayDate($date, $val);
+                    ?>
+                </label>
+            </div>
+        </fieldset>
 
         <div class="form-actions">
             <input class="menu-button" type="submit" value="Anmelden">

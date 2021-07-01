@@ -34,8 +34,18 @@ function getRiskLevel($riskID): string
     $statement = $pdo->prepare('SELECT riskLevel FROM M307DB.riskRanking WHERE riskID = :riskID;');
     $statement->bindValue(':riskID', $riskID);
     $statement->execute();
-    $riskLevel = $statement->fetchAll();
-    return $riskLevel[0][0];
+    $riskLevels = $statement->fetchAll();
+    return $riskLevels[0][0];
+}
+
+function getRiskID($riskLevel): int
+{
+    global $pdo;
+    $statement = $pdo->prepare('SELECT riskID FROM M307DB.riskRanking WHERE riskLevel = :riskLevel;');
+    $statement->bindValue(':riskLevel', $riskLevel);
+    $statement->execute();
+    $riskIDs = $statement->fetchAll();
+    return $riskIDs[0][0];
 }
 
 function getAllRiskLevels(): array
@@ -56,15 +66,15 @@ function getPackageName($packageID): string
     return $packageName[0][0];
 }
 
-function getRepayDate($startDate, $riskID) : string{
-    require ("../Controllers/Utils.php");
+function getRepayDate($startDate, $riskLevel) : string{
     global $pdo;
+    $riskID = getRiskID($riskLevel);
     $statement = $pdo->prepare('SELECT changeRentalDays FROM M307DB.riskRanking WHERE riskID = :riskID;');
     $statement->bindValue(':riskID', $riskID);
     $statement->execute();
     $riskLevel = $statement->fetchAll();
     $days = 480 + $riskLevel[0][0];
-    return date('d.m.Y', strtotime(date(formatDate($startDate) .' + '.$days.' days')));
+    return date('d.m.Y', strtotime(date('Y-m-d',$startDate) .' + '.$days.' days'));
 }
 
 // CREATE
