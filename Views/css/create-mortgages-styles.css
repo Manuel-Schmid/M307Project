@@ -43,7 +43,11 @@ fieldset {
 }
 
 .form-legend {
-    margin-bottom: .75em;
+    margin-bottom: -0.25em;
+}
+
+#repayDate {
+    font-weight: bold;
 }
 
 .form-legend + .form-group > .form-label:first-child {

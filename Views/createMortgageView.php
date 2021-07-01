@@ -69,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/create-mortgages-styles.css">
+    <script src="../Controllers/dateHandling.js"></script>
     <link rel="icon" href="../Media/favicon.ico" type="image/x-icon">
     <title>Hypothek erfassen</title>
 </head>
@@ -120,18 +121,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="text" id="phone" name="phone"><br>
             </div>
         </fieldset>
+
         <fieldset>
             <legend class="form-legend">Hypothekangaben</legend>
             <div class="form-group">
                 <input type="hidden" name="action" value="insert">
                 <label class="form-label" for="riskLevel">Risiko Level*</label>
-                <select id="riskLevel" name="riskLevel">
-                    <script src="../Controllers/dateHandling.js"></script>
+                <select id="riskLevel" name="riskLevel" onchange="updateEndDate(this.selectedIndex);" onfocus="this.selectedIndex = -1;">
                     <?php
                     $levels = getAllRiskLevels();
                     for ($i = 0; $i < count($levels); $i++) {
                         $val = $levels[$i]['riskLevel'];
-                        echo '<option value ="'.$val.'" onchange="updateEndDate('.$val.')">'.$val.'</option>';
+                        echo "<option value ='$val'>" . $val . "</option>";
                     }
                     ?>
                 </select><br>
@@ -154,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <fieldset>
             <legend class="form-legend">Rückzahlung</legend>
             <div class="form-group">
-                <label class="form-label" for="firstname">Rückzahlungs-Datum:
+                <span id="repayDate" class="form-label">Rückzahlungs-Datum:
                     <?php
                     global $val;
                     $startDate = date('Y-m-d');
@@ -162,10 +163,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $endDate = getRepayDate($startDate, $riskID);
                     echo $endDate;
                     ?>
-                </label>
+                </span>
             </div>
         </fieldset>
-       <p>* sind Pflichfelder</p>
+       <p>* Pflichfelder</p>
 
         <div class="form-actions">
             <input class="menu-button" type="submit" value="Erfassen">
@@ -180,5 +181,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ?>
   
 </div>
+<script>updateEndDate(0);</script>
 </body>
 </html>

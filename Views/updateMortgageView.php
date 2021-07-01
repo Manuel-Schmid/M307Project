@@ -61,16 +61,6 @@ $mortgage = getMortgage($mortgageID);
                 let inputValue = document.getElementById("firstName-input").value;
                 checkEmpty(inputValue);
                 document.getElementById('firstName').innerText = inputValue;
-
-                // document.cookie="input=" + inputValue;
-                // window.location.href='updateMortgageView.php?input=' + inputValue;
-                // $.post('updateMortgageView.php',{'data': "value1"}, function (data) {
-                //     $val = $('#response').text(data);
-                // });
-                <?php
-                //                $inputValue = "";
-                //                updateMortgageItem('firstName', $mortgageID, $inputValue);
-                ?>
             });
         });
     </script>
