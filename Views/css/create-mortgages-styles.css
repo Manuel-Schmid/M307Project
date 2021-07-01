@@ -22,3 +22,15 @@ option{
     background-color: #04aaaa;
     padding-left: 20px;
 }
+
+.errors {
+    border: 1px solid #E20404;
+    background: #FFF3F3;
+    color: #E20404;
+    padding: 1em;
+    border-radius: 4px;
+}
+.errors li {
+    padding-left: 4px;
+    margin-left: 14px;
+}

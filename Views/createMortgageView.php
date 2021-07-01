@@ -108,7 +108,7 @@ require("../Models/CRUD.php");
         <input type="text" id="email" name="email"><br>
 
         <label for="phone">Telefon*</label>
-        <input type="number" id="phone" name="phone"><br>
+        <input type="text" id="phone" name="phone"><br>
     </fieldset>
     <fieldset>
         <legend>Hypothekangaben</legend>
@@ -116,10 +116,10 @@ require("../Models/CRUD.php");
         <label for="riskLevel">Risiko Level*</label>
         <select id="riskLevel" name="riskLevel">
             <?php
-            $var = count(getAllRiskLevels());
-            for ($i = 0; $i < $var; $i++) {
-                $riskLevel = getRiskLevel[$i]['FK_packageID'];
-                echo "<option value ='$riskLevel'>" .$riskLevel. "% </option>";
+            $riskLevels = getAllRiskLevels();
+            for ($i = 0; $i < $riskLevels; $i++) {
+                $val = $riskLevels[$i]['riskLevel'];
+                echo "<option value ='$val'>" .$val. "% </option>";
             }
             ?>
         </select><br>
@@ -127,9 +127,9 @@ require("../Models/CRUD.php");
         <label for="mortgagePackage">Hypothek Paket*</label>
         <select id="mortgagePackage" name="mortgagePackage">
             <?php
-            $var = count(getAllPackages());
-            for ($i = 1; $i < $var; $i++) {
-                $packageName = getPackageName[$i]['FK_packageID'];
+            $packages = getAllPackages();
+            for ($i = 1; $i < count($packages); $i++) {
+                $packageName = $packages[$i]['packageName'];
                 echo "<option value ='$packageName'>" .$packageName. "</option>";
             }
             ?>
@@ -139,8 +139,5 @@ require("../Models/CRUD.php");
 
     <input type="submit" name="form-submit">Hypothek erstellen</input>
 </form>
-<?php
-
-?>
 </body>
 </html>
