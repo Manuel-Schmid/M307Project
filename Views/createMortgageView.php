@@ -126,7 +126,7 @@ require("../Models/CRUD.php");
 
         <label for="mortgagePackage">Hypothek Paket*</label>
         <select id="mortgagePackage" name="mortgagePackage">
-            <?php
+            <?phps
             $packages = getAllPackages();
             for ($i = 1; $i < count($packages); $i++) {
                 $packageName = $packages[$i]['packageName'];
