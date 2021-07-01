@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="Views/css/global.css">
     <link rel="stylesheet" href="Views/css/main.css">
-    <link rel="icon" href="Media/favicon.ico" type="image/x-icon">
     <title>M307 Projekt</title>
 </head>
 <body>
