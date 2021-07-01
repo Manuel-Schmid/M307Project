@@ -1,6 +1,26 @@
+.menu-button{
+    width: 30%;
+    color: white;
+    background-color: #038a8a;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+button:hover{
+    color: white;
+    background-color: #04aaaa;
+    padding: 10px;
+    border-radius: 20px;
+}
+
 #mortgage th {
     background-color: #04aaaa;
     padding-left: 20px;
+}
+
+input{
+    width: 10%;
+    border-radius: 20px;
 }
 
 #mortgage td{
