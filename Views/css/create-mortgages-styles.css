@@ -3,13 +3,15 @@
     position: absolute;
     height: 50%;
     left: auto;
+
+option{
+    width: 10%;
+    border-radius: 20px;
 }
 
-.form-right{
-    width: 50%;
-    position: absolute;
-    height: 100%;
-    right: auto;
+#mortgage th {
+    background-color: #04aaaa;
+    padding-left: 20px;
 }
 
 .tab-form{
@@ -17,38 +19,62 @@
     -moz-tab-size:30;
     -ms-tab-size: 30;
     white-space: pre;
+
+.wrapper {
+    margin-top: 2em;
+    width: 80%;
+    max-width: 550px;
+    margin: 2em auto 0;
 }
 
-fieldset{
-    border: solid;
-    border-color: black;
-    border-radius: 20px;
-
+.form-title {
+    margin-bottom: .7em;
 }
 
-input{
-    border: solid;
-    border-color: black;
-    border-radius: 15px;
+.form-label {
+    margin-top: .7em;
+    margin-bottom: .3em;
 }
 
-
-.tab-ajust{
-    tab-size:20cm;
-    -moz-tab-size:20cm;
-    -ms-tab-size: 20cm;
-    white-space: pre;
-}
-h1{
-    font-size: 80px;
-    text-align: center;
+fieldset {
+    margin-top: 2em;
 }
 
-div{
-    width: 90%;
+.form-legend {
+    margin-bottom: .75em;
 }
 
-.h2-form-left{
-    font-size: 30px;
-    font-weight: bold;
+.form-legend + .form-group > .form-label:first-child {
+    margin-top: 0;
+}
+
+.option-group {
+    margin-top: 2em;
+}
+
+.form-actions {
+    padding-top: 1em;
+    border-top: 1px solid #eee;
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+.errors {
+    border: 1px solid #E20404;
+    background: #FFF3F3;
+    color: #E20404;
+    padding: 1em;
+    border-radius: 4px;
+}
+.errors li {
+    padding-left: 4px;
+    margin-left: 14px;
+}
+
+.success{
+    border: 1px solid #41ff00;
+    background: #e9ffe8;
+    color: #033901;
+    padding: 1em;
+    border-radius: 4px;
 }
