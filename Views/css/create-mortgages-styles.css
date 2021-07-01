@@ -23,6 +23,45 @@ option{
     padding-left: 20px;
 }
 
+.wrapper {
+    margin-top: 2em;
+    width: 80%;
+    max-width: 550px;
+    margin: 2em auto 0;
+}
+
+.form-title {
+    margin-bottom: .7em;
+}
+
+.form-label {
+    margin-top: .7em;
+    margin-bottom: .3em;
+}
+
+fieldset {
+    margin-top: 2em;
+}
+
+.form-legend {
+    margin-bottom: .75em;
+}
+
+.form-legend + .form-group > .form-label:first-child {
+    margin-top: 0;
+}
+
+.option-group {
+    margin-top: 2em;
+}
+
+.form-actions {
+    padding-top: 1em;
+    border-top: 1px solid #eee;
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
 .errors {
     border: 1px solid #E20404;
     background: #FFF3F3;
@@ -33,4 +72,12 @@ option{
 .errors li {
     padding-left: 4px;
     margin-left: 14px;
+}
+
+.success{
+    border: 1px solid #41ff00;
+    background: #e9ffe8;
+    color: #033901;
+    padding: 1em;
+    border-radius: 4px;
 }
