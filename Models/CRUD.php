@@ -14,7 +14,7 @@ function getAllPackages(): array
 function getAllMortgages(): array
 {
     global $pdo;
-    $statement = $pdo->prepare('SELECT * FROM mortgages');
+    $statement = $pdo->prepare('SELECT * FROM mortgages ORDER BY startDate ASC');
     $statement->execute();
     return $statement->fetchAll();
 }
@@ -34,8 +34,18 @@ function getRiskLevel($riskID): string
     $statement = $pdo->prepare('SELECT riskLevel FROM M307DB.riskRanking WHERE riskID = :riskID;');
     $statement->bindValue(':riskID', $riskID);
     $statement->execute();
-    $riskLevel = $statement->fetchAll();
-    return $riskLevel[0][0];
+    $riskLevels = $statement->fetchAll();
+    return $riskLevels[0][0];
+}
+
+function getRiskID($riskLevel): int
+{
+    global $pdo;
+    $statement = $pdo->prepare('SELECT riskID FROM M307DB.riskRanking WHERE riskLevel = :riskLevel;');
+    $statement->bindValue(':riskLevel', $riskLevel);
+    $statement->execute();
+    $riskIDs = $statement->fetchAll();
+    return $riskIDs[0][0];
 }
 
 function getAllRiskLevels(): array
@@ -57,14 +67,13 @@ function getPackageName($packageID): string
 }
 
 function getRepayDate($startDate, $riskID) : string{
-    require ("../Controllers/Utils.php");
     global $pdo;
     $statement = $pdo->prepare('SELECT changeRentalDays FROM M307DB.riskRanking WHERE riskID = :riskID;');
     $statement->bindValue(':riskID', $riskID);
     $statement->execute();
     $riskLevel = $statement->fetchAll();
     $days = 480 + $riskLevel[0][0];
-    return date('d.m.Y', strtotime(date(formatDate($startDate) .' + '.$days.' days')));
+    return date('d.m.Y', date('d.m.Y', strtotime($startDate)) . ' + '.$days.' days');
 }
 
 // CREATE
@@ -142,88 +151,6 @@ function updateMortgageItem($attribute, $mortgageID, $value)
             break;
     }
     $statement->bindValue(':mortgageID', $mortgageID);
-    $statement->execute();
-    $statement->closeCursor();
-}
-
-function updateFirstNameMortgage($mortgageID, $firstName)
-{
-    global $pdo;
-    $query = "UPDATE `M307DB`.`mortgages` SET
-                        `firstName` = :firstName
-                        WHERE `mortgageID` = :mortgageID;";
-    $statement = $pdo->prepare($query);
-    $statement->bindValue(':mortgageID', $mortgageID);
-    $statement->bindValue(':firstName', $firstName);
-    $statement->execute();
-    $statement->closeCursor();
-}
-
-function updateLastNameMortgage($mortgageID,$lastName)
-{
-    global $pdo;
-    $query = "UPDATE `M307DB`.`mortgages` SET
-                        `lastName` = :lastName
-                        WHERE `mortgageID` = :mortgageID;";
-    $statement = $pdo->prepare($query);
-    $statement->bindValue(':mortgageID', $mortgageID);
-    $statement->bindValue(':lastName', $lastName);
-    $statement->execute();
-    $statement->closeCursor();
-}
-
-
-function updateEmailMortgage($mortgageID, $email)
-{
-    global $pdo;
-    $query = "UPDATE `M307DB`.`mortgages` SET
-                        `email` = :email
-                        WHERE `mortgageID` = :mortgageID;";
-    $statement = $pdo->prepare($query);
-    $statement->bindValue(':mortgageID', $mortgageID);
-    $statement->bindValue(':email', $email);
-    $statement->execute();
-    $statement->closeCursor();
-}
-
-
-function updatePhoneNumberMortgage($mortgageID, $phoneNumber)
-{
-    global $pdo;
-    $query = "UPDATE `M307DB`.`mortgages` SET
-                        `phoneNumber` = :phoneNumber
-                        WHERE `mortgageID` = :mortgageID;";
-    $statement = $pdo->prepare($query);
-    $statement->bindValue(':mortgageID', $mortgageID);
-    $statement->bindValue(':phoneNumber', $phoneNumber);
-    $statement->execute();
-    $statement->closeCursor();
-}
-
-
-function updateRepaymentStatusMortgage($mortgageID, $repaymentStatus)
-{
-    global $pdo;
-    $query = "UPDATE `M307DB`.`mortgages` SET
-                        `repaymentStatus` = :repaymentStatus
-                        WHERE `mortgageID` = :mortgageID;";
-    $statement = $pdo->prepare($query);
-    $statement->bindValue(':mortgageID', $mortgageID);
-    $statement->bindValue(':repaymentStatus', $repaymentStatus);
-    $statement->execute();
-    $statement->closeCursor();
-}
-
-
-function updatePackageIDMortgage($mortgageID, $packageID)
-{
-    global $pdo;
-    $query = "UPDATE `M307DB`.`mortgages` SET
-                        `FK_packageID` = :packageID
-                        WHERE `mortgageID` = :mortgageID;";
-    $statement = $pdo->prepare($query);
-    $statement->bindValue(':mortgageID', $mortgageID);
-    $statement->bindValue(':packageID', $packageID);
     $statement->execute();
     $statement->closeCursor();
 }

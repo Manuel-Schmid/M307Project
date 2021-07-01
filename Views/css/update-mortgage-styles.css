@@ -9,27 +9,12 @@
 button:hover{
     color: white;
     background-color: #04aaaa;
-    padding: 10px;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 #mortgage th {
     background-color: #04aaaa;
     padding-left: 20px;
-}
-.menu-bar {
-    width: 50%;
-    background-color: #038a8a;
-    font-size: 20px;
-    color: white;
-    border: solid;
-    border-radius: 40px;
-    padding: 10px;
-}
-
-a:hover{
-    background-color: #04aaaa;
-    color: white;
 }
 
 .form-left{
@@ -115,7 +100,6 @@ div{
 .input-field {
     font-size: 15px;
     width: 90%;
-    /*margin-left: 15px;*/
     padding: 5px 20px 5px 6px;
     display: inline-block;
     border: 1px solid #ccc;
@@ -142,4 +126,20 @@ div{
 
 .small-button p {
     margin: 0;
+}
+
+.noBorder {
+    background-color: transparent !important;
+    border-bottom-color: transparent;
+}
+
+.noBorder td {
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+#save {
+    padding: 15px;
+
 }

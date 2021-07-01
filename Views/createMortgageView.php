@@ -6,8 +6,8 @@ $noError = false;
 
 $errorList = [];
 
-$firstname = $_POST['firstname'] ?? '';
-$lastname = $_POST['lastname'] ?? '';
+$firstName = $_POST['firstname'] ?? '';
+$lastName = $_POST['lastname'] ?? '';
 $email = $_POST['email'] ?? '';
 $phone = $_POST['phone'] ?? '';
 $riskLevel = $_POST['riskLevel'] ?? '';
@@ -16,19 +16,19 @@ $mortgagePackage = $_POST['mortgagePackage'] ?? '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    $firstname = trim($firstname);
-    $lastname = trim($lastname);
+    $firstName = trim($firstName);
+    $lastName = trim($lastName);
     $email = trim($email);
     $phone = trim($phone);
     $riskLevel = trim($riskLevel);
     $mortgagePackage = trim($mortgagePackage);
 
 
-    if ($firstname === '') {
+    if ($firstName === '') {
         $errorList[] = 'Bitte geben Sie einen Vornamen ein.';
     }
 
-    if ($lastname === '') {
+    if ($lastName === '') {
         $errorList[] = 'Bitte geben Sie einen Nachname ein.';
     }
 
@@ -69,27 +69,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/create-mortgages-styles.css">
+    <link rel="icon" href="../Media/favicon.ico" type="image/x-icon">
     <title>Hypothek erfassen</title>
 </head>
 <body>
 
 <div>
-    <h1 class="text-center">Hypothekarbank</h1>
+    <h1>Hypothekarbank</h1>
     <nav>
         <a href="createMortgageView.php" class="selected-menue-bar text-center">Leihe erfassen</a>
         <a href="existingMortgagesView.php" class="menu-bar text-center">bestehende Leihen</a>
     </nav>
 </div>
 <div class="wrapper">
-
     <h1 class="form-title">Erfassen einer neuen Hypothek</h1>
+
     <?php if ($noError): ?>
-
         <p1 class=success>Speichern der Hypothek erfolgreich</p1>
-
     <?php else: ?>
-
-
         <?php if (count($errorList) > 0): ?>
             <ul class="errors">
                 <?php foreach ($errorList as $error): ?>
@@ -97,7 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>
-
     <?php endif; ?>
     <br>
     <form method="POST">
@@ -158,8 +154,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $repayDay = getRepayDate($date, 2); //Hier muss irgendwelche Hexerei angewendet werden, damit man aus den selects die riskID bekommt...
         echo "<p>$repayDay</p>";
         ?>
+        <fieldset>
+            <legend class="form-legend">Rückzahlung</legend>
+            <div class="form-group">
+                <label class="form-label" for="firstname">Rückzahlungs-Datum:
+                    <?php
+                    global $val;
+                    $startDate = date('Y-m-d');
+                    $riskID = getRiskID($val);
+                    var_dump($riskID);
+                    $endDate = getRepayDate($startDate, $riskID);
+                    var_dump($endDate);
+//                    echo '<p>'.$endDate.'<p>';
 
-        <p>* sind Pflichfelder</p>
+//                    $fdate = formatDate($date);
+//                    echo getRepayDate($date, $val);
+                    ?>
+                </label>
+            </div>
+        </fieldset>
+       <p>* sind Pflichfelder</p>
+
         <div class="form-actions">
             <input class="menu-button" type="submit" value="Erfassen">
         </div>
@@ -170,9 +185,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $countrycode = filter_input(INPUT_POST, "countrycode", FILTER_SANITIZE_STRING);
     $district = filter_input(INPUT_POST, "district", FILTER_SANITIZE_STRING);
     $population = filter_input(INPUT_POST, "population", FILTER_SANITIZE_STRING);
-
-
     ?>
+  
 </div>
 </body>
 </html>
