@@ -13,6 +13,11 @@ buton:hover{
     border-radius: 20px;
 }
 
+option{
+    width: 10%;
+    border-radius: 20px;
+}
+
 #mortgage th {
     background-color: #04aaaa;
     padding-left: 20px;
