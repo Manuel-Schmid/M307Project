@@ -5,22 +5,21 @@
 
 #mortgage td{
     font-size: 15px;
-    padding-left: 22px;
+    padding-left: 7px;
 }
 
 #mortgage tr {
-
 }
 
 
 .list {
-    width: 22%;
+    width: 60%;
 }
 
 .input-field {
     font-size: 15px;
     width: 90%;
-    margin-left: 15px;
+    /*margin-left: 15px;*/
     padding: 5px 20px 5px 6px;
     display: inline-block;
     border: 1px solid #ccc;
