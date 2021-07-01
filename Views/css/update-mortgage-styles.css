@@ -1,0 +1,29 @@
+#mortgage th {
+    background-color: #04aaaa;
+    padding-left: 20px;
+}
+
+#mortgage td{
+    font-size: 15px;
+    padding-left: 22px;
+}
+
+
+.list {
+    width: 22%;
+}
+
+.input-field {
+    font-size: 15px;
+    width: 90%;
+    margin-left: 15px;
+    padding: 5px 20px 5px 6px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.edit-btn {
+    width: 98%;
+}

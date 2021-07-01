@@ -1,0 +1,15 @@
+#mortgages th {
+    background-color: #04aaaa;
+}
+
+.list {
+    margin-bottom: 60px;
+    width: 90%;
+}
+
+@media (min-width: 1000px) {
+    .list {
+        margin-bottom: 60px;
+        width: 70%;
+    }
+}

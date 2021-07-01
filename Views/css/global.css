@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+tr {
+    text-align: left;
+}
+
+td {
+    padding-right: 20px;
+}
+
+.list {
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+}
+
+.list td, .list th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.list tr:nth-child(even){background-color: #f2f2f2;}
+
+/*.list tr:hover {background-color: #ddd;}*/
+
+.list th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: white;
+}
+
+#packages th {
+    background-color: #04AA6D;
+}
+
+.edit-btn {
+    background-color: #038a8a;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /*font-size: 16px;*/
+}
+
+.edit-btn:hover {
+    background-color: #036767;
+}
+
+.text-center {
+    text-align: center;
+}

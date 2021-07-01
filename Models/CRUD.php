@@ -19,6 +19,15 @@ function getAllMortgages(): array
     return $statement->fetchAll();
 }
 
+function getMortgage($mortgageID): array
+{
+    global $pdo;
+    $statement = $pdo->prepare('SELECT * FROM mortgages WHERE mortgageID = :mortgageID;');
+    $statement->bindValue(':mortgageID', $mortgageID);
+    $statement->execute();
+    return $statement->fetchAll();
+}
+
 function getRiskLevel($riskID): string
 {
     global $pdo;
@@ -40,14 +49,14 @@ function getPackageName($packageID): string
 }
 
 function getRepayDate($startDate, $riskID) : string{
+    require ("../Controllers/Utils.php");
     global $pdo;
     $statement = $pdo->prepare('SELECT changeRentalDays FROM M307DB.riskRanking WHERE riskID = :riskID;');
     $statement->bindValue(':riskID', $riskID);
     $statement->execute();
     $riskLevel = $statement->fetchAll();
     $days = 480 + $riskLevel[0][0];
-    $start = new DateTime($startDate);
-    return date('d.m.Y', strtotime(date('d.m.Y', $start->getTimestamp()) .' + '.$days.' days'));
+    return date('d.m.Y', strtotime(date(formatDate($startDate) .' + '.$days.' days')));
 }
 
 // CREATE
@@ -99,3 +108,5 @@ function updateMortgage($mortgageID, $firstName, $lastName, $email, $phoneNumber
     $statement->execute();
     $statement->closeCursor();
 }
+
+
