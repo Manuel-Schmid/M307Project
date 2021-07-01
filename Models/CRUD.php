@@ -66,15 +66,14 @@ function getPackageName($packageID): string
     return $packageName[0][0];
 }
 
-function getRepayDate($startDate, $riskLevel) : string{
+function getRepayDate($startDate, $riskID) : string{
     global $pdo;
-    $riskID = getRiskID($riskLevel);
     $statement = $pdo->prepare('SELECT changeRentalDays FROM M307DB.riskRanking WHERE riskID = :riskID;');
     $statement->bindValue(':riskID', $riskID);
     $statement->execute();
     $riskLevel = $statement->fetchAll();
     $days = 480 + $riskLevel[0][0];
-    return date('d.m.Y', strtotime(date('Y-m-d',$startDate) .' + '.$days.' days'));
+    return date('d.m.Y', date('d.m.Y', strtotime($startDate)) . ' + '.$days.' days');
 }
 
 // CREATE

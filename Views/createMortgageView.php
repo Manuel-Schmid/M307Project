@@ -155,9 +155,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label class="form-label" for="firstname">Rückzahlungs-Datum:
                     <?php
                     global $val;
-                    $startDate = new DateTime('now');
-                    $fdate = date('d.m.Y', $startDate->getTimestamp());
-                    echo getRepayDate($fdate, $val);
+                    $startDate = date('Y-m-d');
+                    $riskID = getRiskID($val);
+                    var_dump($riskID);
+                    $endDate = getRepayDate($startDate, $riskID);
+                    var_dump($endDate);
+//                    echo '<p>'.$endDate.'<p>';
 
 //                    $fdate = formatDate($date);
 //                    echo getRepayDate($date, $val);

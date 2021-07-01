@@ -30,6 +30,7 @@
         <th>Telefonnummer</th>
         <th>Startdatum</th>
         <th>Rückzahlungs-Status</th>
+        <th>Verleih-Frist</th>
         <th>Risikostufe</th>
         <th>Paket</th>
         <th> </th>
@@ -47,6 +48,7 @@
         echo "<td>" . $mortgages[$i]['phoneNumber'] . "</td>";
         echo "<td>" . formatDate($mortgages[$i]['startDate']) . "</td>";
         echo "<td>" . formatRepaymentStatus($mortgages[$i]['repaymentStatus']) . "</td>";
+        echo "<td>" . getEmoji() . "</td>";
         echo "<td>" . getRiskLevel($mortgages[$i]['FK_riskID']) . "</td>";
         echo "<td>" . getPackageName($mortgages[$i]['FK_packageID']) . "</td>";
         echo '<td><a class="edit-btn" href="updateMortgageView.php?mortgageID=' .$mortgages[$i]['mortgageID'].'">Bearbeiten</a></td>';

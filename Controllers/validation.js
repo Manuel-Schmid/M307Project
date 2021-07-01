@@ -5,5 +5,5 @@ function checkEmpty(value, field) {
 }
 
 function checkAt() {
-    
+
 }
