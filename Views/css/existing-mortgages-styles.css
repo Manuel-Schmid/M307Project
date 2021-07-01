@@ -1,7 +1,66 @@
 #mortgages th {
     background-color: #04aaaa;
 }
+.menu-button {
+    width: 30%;
+    background-color: #038a8a;
+    color: white;
+    font-size: 40px;
+}
 
+button:hover{
+    background-color: #04aaaa;
+    color: white;
+}
+
+.form-left{
+    width: 50%;
+    position: absolute;
+    height: 50%;
+    left: auto;
+}
+
+.form-right{
+    width: 50%;
+    position: absolute;
+    height: 100%;
+    right: auto;
+}
+
+.selected-menue-button{
+    margin: 20px 20px 30px 20px;
+    color: darkgray;
+    font-size: 40px;
+
+}
+
+fieldset{
+    border: solid;
+    border-color: black;
+    border-radius: 20px;
+
+}
+
+input{
+    border: solid;
+    border-color: black;
+    border-radius: 15px;
+}
+
+
+h1{
+    font-size: 80px;
+    text-align: center;
+}
+
+div{
+    margin: 10px;
+}
+
+.h2-form-left{
+    font-size: 30px;
+    font-weight: bold;
+}
 .list {
     margin-bottom: 60px;
     width: 90%;
