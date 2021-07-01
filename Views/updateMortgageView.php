@@ -38,7 +38,6 @@ require("../Controllers/Utils.php");
 $mortgage = getMortgage($mortgageID);
 ?>
 
-
 <table id="mortgage" class="list">
     <tr>
         <th>Datensatz</th>
@@ -49,23 +48,28 @@ $mortgage = getMortgage($mortgageID);
     <tr>
         <td>Vorname</td>
         <?php $var = $mortgage[0]['firstName'] ?>
-        <td id="firstName"><?=$var?></td>
-        <td><input name="<?=$var?>" id="firstName-input" type="text" class="input-field" placeholder="<?=$var?>"></td>
-        <td><button id="firstName-btn" class="edit-btn">Speichern</button></td>
+        <td id="firstName"><?= $var ?></td>
+        <td><input name="<?= $var ?>" id="firstName-input" type="text" class="input-field" placeholder="<?= $var ?>">
+        </td>
+        <td>
+            <button id="firstName-btn" class="edit-btn">Speichern</button>
+        </td>
     </tr>
     <script>
-        $(document).ready(function(){
-            $('#firstName-btn').click(function(){
+        $(document).ready(function () {
+            $('#firstName-btn').click(function () {
                 let inputValue = document.getElementById("firstName-input").value;
+                checkEmpty(inputValue);
                 document.getElementById('firstName').innerText = inputValue;
+
                 // document.cookie="input=" + inputValue;
                 // window.location.href='updateMortgageView.php?input=' + inputValue;
                 // $.post('updateMortgageView.php',{'data': "value1"}, function (data) {
                 //     $val = $('#response').text(data);
                 // });
                 <?php
-//                $inputValue = "";
-//                updateMortgageItem('firstName', $mortgageID, $inputValue);
+                //                $inputValue = "";
+                //                updateMortgageItem('firstName', $mortgageID, $inputValue);
                 ?>
             });
         });
@@ -73,15 +77,18 @@ $mortgage = getMortgage($mortgageID);
     <tr>
         <td>Nachname</td>
         <?php $var = $mortgage[0]['lastName'] ?>
-        <td id="lastName"><?=$var?></td>
-        <td><input name="<?=$var?>" id="lastName-input" type="text" class="input-field" placeholder="<?=$var?>"></td>
-        <td><button id="lastName-btn" class="edit-btn">Speichern</button></td>
+        <td id="lastName"><?= $var ?></td>
+        <td><input name="<?= $var ?>" id="lastName-input" type="text" class="input-field" placeholder="<?= $var ?>">
+        </td>
+        <td>
+            <button id="lastName-btn" class="edit-btn">Speichern</button>
+        </td>
     </tr>
     <script>
-        $(document).ready(function(){
-            $('#lastName-btn').click(function(){
+        $(document).ready(function () {
+            $('#lastName-btn').click(function () {
                 let inputValue = document.getElementById("lastName-input").value;
-                checkEmpty(inputValue, "Nachname");
+                //checkEmpty(inputValue, "Nachname");
                 document.getElementById('lastName').innerText = inputValue;
             });
         });
@@ -89,16 +96,18 @@ $mortgage = getMortgage($mortgageID);
     <tr>
         <td>E-Mail</td>
         <?php $var = $mortgage[0]['email'] ?>
-        <td id="email"><?=$var?></td>
-        <td><input name="<?=$var?>" id="email-input" type="text" class="input-field" placeholder="<?=$var?>"></td>
-        <td><button id="email-btn" class="edit-btn">Speichern</button></td>
+        <td id="email"><?= $var ?></td>
+        <td><input name="<?= $var ?>" id="email-input" type="text" class="input-field" placeholder="<?= $var ?>"></td>
+        <td>
+            <button id="email-btn" class="edit-btn">Speichern</button>
+        </td>
     </tr>
     <script>
-        $(document).ready(function(){
-            $('#email-btn').click(function(){
+        $(document).ready(function () {
+            $('#email-btn').click(function () {
                 let inputValue = document.getElementById("email-input").value;
                 checkEmpty(inputValue, "E-Mail-Adresse");
-
+                checkAt();
                 document.getElementById('email').innerText = inputValue;
             });
         });
@@ -106,14 +115,19 @@ $mortgage = getMortgage($mortgageID);
     <tr>
         <td>Telefonnummer</td>
         <?php $var = $mortgage[0]['phoneNumber'] ?>
-        <td id="phoneNumber"><?=$var?></td>
-        <td><input name="<?=$var?>" id="phoneNumber-input" type="text" class="input-field" placeholder="<?=$var?>"></td>
-        <td><button id="phoneNumber-btn" class="edit-btn">Speichern</button></td>
+        <td id="phoneNumber"><?= $var ?></td>
+        <td><input name="<?= $var ?>" id="phoneNumber-input" type="text" class="input-field" placeholder="<?= $var ?>">
+        </td>
+        <td>
+            <button id="phoneNumber-btn" class="edit-btn">Speichern</button>
+        </td>
     </tr>
     <script>
-        $(document).ready(function(){
-            $('#phoneNumber-btn').click(function(){
+        $(document).ready(function () {
+            $('#phoneNumber-btn').click(function () {
                 let inputValue = document.getElementById("phoneNumber-input").value;
+                checkEmpty(inputValue, "Telefonnummer");
+                checkNumbers(inputValue);
                 document.getElementById('phoneNumber').innerText = inputValue;
             });
         });
@@ -121,10 +135,10 @@ $mortgage = getMortgage($mortgageID);
     <tr>
         <td>Paket</td>
         <?php $var = getPackageName($mortgage[0]['FK_packageID']) ?>
-        <td id="package"><?=$var?></td>
-        <td> <select name="packageSelect" id="package-input" class="input-field">
+        <td id="package"><?= $var ?></td>
+        <td><select name="packageSelect" id="package-input" class="input-field">
                 <option value="none" selected disabled hidden>
-                    <?=$var?>
+                    <?= $var ?>
                 </option>
                 <?php
                 $packages = getAllPackages();
@@ -134,11 +148,13 @@ $mortgage = getMortgage($mortgageID);
                 }
                 ?>
             </select>
-        <td><button id="package-btn" class="edit-btn">Speichern</button></td>
+        <td>
+            <button id="package-btn" class="edit-btn">Speichern</button>
+        </td>
     </tr>
     <script>
-        $(document).ready(function(){
-            $('#package-btn').click(function(){
+        $(document).ready(function () {
+            $('#package-btn').click(function () {
                 let inputValue = document.getElementById("package-input").value;
                 document.getElementById('package').innerText = inputValue;
             });
@@ -147,19 +163,21 @@ $mortgage = getMortgage($mortgageID);
     <tr>
         <td>Rückzahlungs-Status</td>
         <?php $var = formatRepaymentStatus($mortgage[0]['repaymentStatus']) ?>
-        <td id="repaymentStatus"><?=$var?></td>
-        <td> <select name="repayStatusSelect" id="repaymentStatus-input" class="input-field">
+        <td id="repaymentStatus"><?= $var ?></td>
+        <td><select name="repayStatusSelect" id="repaymentStatus-input" class="input-field">
                 <option value="none" selected disabled hidden>
-                    <?=$var?>
+                    <?= $var ?>
                 </option>
                 <option value="Nicht zurückgezahlt">Nicht zurückgezahlt</option>
                 <option value="Zurückgezahlt">Zurückgezahlt</option>
             </select>
-        <td><button id="repaymentStatus-btn" class="edit-btn">Speichern</button></td>
+        <td>
+            <button id="repaymentStatus-btn" class="edit-btn">Speichern</button>
+        </td>
     </tr>
     <script>
-        $(document).ready(function(){
-            $('#repaymentStatus-btn').click(function(){
+        $(document).ready(function () {
+            $('#repaymentStatus-btn').click(function () {
                 let inputValue = document.getElementById("repaymentStatus-input").value;
                 document.getElementById('repaymentStatus').innerText = inputValue;
             });
@@ -181,11 +199,13 @@ $mortgage = getMortgage($mortgageID);
         <td></td>
         <td></td>
         <td></td>
-        <td><button id="save" class="edit-btn">Alle speichern</button></td>
+        <td>
+            <button id="save" class="edit-btn">Alle speichern</button>
+        </td>
     </tr>
     <script>
-        $(document).ready(function(){
-            $('#save').click(function(){
+        $(document).ready(function () {
+            $('#save').click(function () {
                 document.getElementById('firstName').innerText = document.getElementById("firstName-input").value;
                 document.getElementById('lastName').innerText = document.getElementById("lastName-input").value;
                 document.getElementById('email').innerText = document.getElementById("email-input").value;
