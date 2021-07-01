@@ -39,6 +39,8 @@ $mortgage = getMortgage($mortgageID);
 ?>
 
 
+
+
 <table id="mortgage" class="list">
     <tr>
         <th>Datensatz</th>
@@ -57,6 +59,7 @@ $mortgage = getMortgage($mortgageID);
         $(document).ready(function(){
             $('#firstName-btn').click(function(){
                 let inputValue = document.getElementById("firstName-input").value;
+                checkEmpty(inputValue);
                 document.getElementById('firstName').innerText = inputValue;
                 // document.cookie="input=" + inputValue;
                 // window.location.href='updateMortgageView.php?input=' + inputValue;
@@ -98,7 +101,7 @@ $mortgage = getMortgage($mortgageID);
             $('#email-btn').click(function(){
                 let inputValue = document.getElementById("email-input").value;
                 checkEmpty(inputValue, "E-Mail-Adresse");
-
+                checkAt();
                 document.getElementById('email').innerText = inputValue;
             });
         });
@@ -114,6 +117,8 @@ $mortgage = getMortgage($mortgageID);
         $(document).ready(function(){
             $('#phoneNumber-btn').click(function(){
                 let inputValue = document.getElementById("phoneNumber-input").value;
+                checkEmpty(inputValue, "Telefonnummer");
+                checkNumbers(inputValue);
                 document.getElementById('phoneNumber').innerText = inputValue;
             });
         });
