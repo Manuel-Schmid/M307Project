@@ -1,53 +1,56 @@
 <?php
-$success = false;
+$noError = false;
 
-$errors = [];
+$errorList = [];
 
-$name    = $_POST['name']    ?? '';
-$email   = $_POST['email']   ?? '';
-$phone   = $_POST['phone']   ?? '';
-$people  = $_POST['people']  ?? '';
-$hotel   = $_POST['hotel']   ?? '';
-$program = $_POST['program'] ?? '';
-$shuttle = $_POST['shuttle'] ?? '';
+$firstname    = $_POST['firstname']    ?? '';
+$lastname     = $_POST['lastname']     ??'';
+$email        = $_POST['email']        ?? '';
+$phone        = $_POST['phone']        ?? '';
+$riskLevel    = $_POST['riskLevel']    ?? '';
+$mortgagePackage = $_POST['mortgagePackage']    ??'';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // Schritt 4
-    $name    = trim($name);
-    $email   = trim($email);
-    $phone   = trim($phone);
+
+    $firstname  = trim($firstname);
+    $lastname   = trim($lastname);
+    $email      = trim($email);
+    $phone      = trim($phone);
+    $riskLevel  = trim($riskLevel);
+    $mortgagePackage = trim($mortgagePackage);
 
 
-    if($name === '') {
-        $errors[] = 'Bitte geben Sie einen Namen ein.';
+    if($firstname === '') {
+        $errorList[] = 'Bitte geben Sie einen Vornamen ein.';
+    }
+
+    if($lastname === '') {
+        $errorList[] = 'Bitte geben Sie einen Nachname ein.';
     }
 
     if($email === '') {
-        $errors[] = 'Bitte geben Sie eine Email ein.';
+        $errorList[] = 'Bitte geben Sie eine Email ein.';
     } elseif(strpos($email, '@') === false) {
-        $errors[] = 'Die Email-Adresse "' . $email . '" ist ungültig.';
+        $errorList[] = 'Die Email-Adresse "' . $email . '" ist ungültig.';
     }
 
     if($phone === '') {
-        $errors[] = 'Bitte geben Sie eine Telefonnummer ein.';
+        $errorList[] = 'Bitte geben Sie eine Telefonnummer ein.';
     } elseif( ! preg_match('/^[\+ 0-9]+$/', $phone)) {
-        $errors[] = 'Die Telefonnummer "' . $phone . '" ist ungültig.';
+        $errorList[] = 'Die Telefonnummer "' . $phone . '" ist ungültig.';
     }
 
-    if($people === '') {
-        $errors[] = 'Bitte geben Sie die Anzahl teilnehmender Personen ein.';
-    } elseif( ! is_numeric($people)) {
-        $errors[] = 'Bitte geben Sie für die Anzahl Personen nur Zahlen ein.';
+    if($firstname === '') {
+        $errorList[] = 'Bitte geben Sie einen Vornamen ein.';
     }
 
-    if($hotel === '') {
-        $errors[] = 'Bitte wählen Sie ein Hotel für die Übernachtung aus.';
+    if($mortgagePackage === '') {
+        $errorList[] = 'Bitte geben Sie einen Vornamen ein.';
     }
 
-    // Keine Fehler vorhanden
-    if(count($errors) === 0) {
-        $success = true;
+    if(count($errorList) === 0) {
+        $noError = true;
     }
 
 }
@@ -66,22 +69,30 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Hypothek erfassen</title>
 </head>
 <body>
-<?php //if($success): ?>
-<!---->
-<!--    <h1 class="form-title">Anmeldung erfolgreich!</h1>-->
-<!---->
-<!--    <p>Vielen Dank für Ihre Anmeldung. Wir haben diese erfolgreich entgegengenommen.</p>-->
-<!---->
-<?php //else: ?>
-<!---->
-<!--<h1 class="form-title">Anmeldung für Kundenevent</h1>-->
-<!---->
-<!--<p>Füllen Sie das folgende Formular aus um sich für unseren Kundenevent  --><?//= date("Y"); ?><!-- anzumelden.</p>-->
 
 <?php
 require("../Models/CRUD.php");
 ?>
 <h1>Erfassen einer neuen Hypothek</h1>
+<?php if($noError): ?>
+
+    <h1 class="form-title">Erfassen erfolgreich!</h1>
+
+<?php else: ?>
+
+<!--    <h1 class="form-title"></h1>-->
+
+    <!-- SCHRITT 2 -->
+    <?php if(count($errorList) > 0): ?>
+        <ul class="errors">
+            <?php foreach($errorList as $error): ?>
+                <li><?= $errorList ?></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+
+<?php endif; ?>
+
 <br><br>
 
 <form action="" method="post">
