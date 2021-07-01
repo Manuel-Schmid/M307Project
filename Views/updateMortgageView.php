@@ -38,6 +38,7 @@ require("../Controllers/Utils.php");
 $mortgage = getMortgage($mortgageID);
 ?>
 
+
 <table id="mortgage" class="list">
     <tr>
         <th>Datensatz</th>
@@ -121,7 +122,18 @@ $mortgage = getMortgage($mortgageID);
         <td>Paket</td>
         <?php $var = getPackageName($mortgage[0]['FK_packageID']) ?>
         <td id="package"><?=$var?></td>
-        <td><input name="<?=$var?>" id="package-input" type="text" class="input-field" placeholder="<?=$var?>"></td>
+        <td> <select name="packageSelect" id="package-input" class="input-field">
+                <option value="none" selected disabled hidden>
+                    <?=$var?>
+                </option>
+                <?php
+                $packages = getAllPackages();
+                for ($i = 0; $i < count($packages); $i++) {
+                    $packageName = $packages[$i]['packageName'] . " (" . $packages[$i]['percentage'] . "%)";
+                    echo "<option value ='$packageName'>" . $packageName . "</option>";
+                }
+                ?>
+            </select>
         <td><button id="package-btn" class="edit-btn">Speichern</button></td>
     </tr>
     <script>
@@ -136,7 +148,13 @@ $mortgage = getMortgage($mortgageID);
         <td>Rückzahlungs-Status</td>
         <?php $var = formatRepaymentStatus($mortgage[0]['repaymentStatus']) ?>
         <td id="repaymentStatus"><?=$var?></td>
-        <td><input name="<?=$var?>" id="repaymentStatus-input" type="text" class="input-field" placeholder="<?=$var?>"></td>
+        <td> <select name="repayStatusSelect" id="repaymentStatus-input" class="input-field">
+                <option value="none" selected disabled hidden>
+                    <?=$var?>
+                </option>
+                <option value="Nicht zurückgezahlt">Nicht zurückgezahlt</option>
+                <option value="Zurückgezahlt">Zurückgezahlt</option>
+            </select>
         <td><button id="repaymentStatus-btn" class="edit-btn">Speichern</button></td>
     </tr>
     <script>
