@@ -40,14 +40,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif( ! preg_match('/^[\+ 0-9]+$/', $phone)) {
         $errorList[] = 'Die Telefonnummer "' . $phone . '" ist ungültig.';
     }
-//
-//    if($riskLevel === '') {
-//        $errorList[] = 'Bitte wählen Sie ein Risikolevel.';
-//    }
-//
-//    if($mortgagePackage === '') {
-//        $errorList[] = 'Bitte wählen Sie ein Hypothek-Paket.';
-//    }
+
+    if($riskLevel === '') {
+        $errorList[] = 'Bitte wählen Sie ein Risikolevel.';
+    }
+
+    if($mortgagePackage === '') {
+        $errorList[] = 'Bitte wählen Sie ein Hypothek-Paket.';
+    }
 
     if(count($errorList) === 0) {
         $noError = true;
@@ -115,18 +115,18 @@ require("../Models/CRUD.php");
 
         <label for="riskLevel">Risiko Level*</label>
         <select id="riskLevel" name="riskLevel">
-            <?php
-            $riskLevels = getAllRiskLevels();
-            for ($i = 0; $i < $riskLevels; $i++) {
-                $val = $riskLevels[$i]['riskLevel'];
-                echo "<option value ='$val'>" .$val. "% </option>";
-            }
-            ?>
+<!--            --><?php
+//            $riskLevels = getAllRiskLevels();
+//            for ($i = 0; $i < $riskLevels; $i++) {
+//                $val = $riskLevels[$i]['riskLevel'];
+//                echo "<option value ='$val'>" .$val. "% </option>";
+//            }
+//            ?>
         </select><br>
 
         <label for="mortgagePackage">Hypothek Paket*</label>
         <select id="mortgagePackage" name="mortgagePackage">
-            <?phps
+            <?php
             $packages = getAllPackages();
             for ($i = 1; $i < count($packages); $i++) {
                 $packageName = $packages[$i]['packageName'];
