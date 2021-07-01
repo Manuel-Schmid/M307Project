@@ -78,7 +78,7 @@ nav{
     border: solid;
     border-radius: 20px;
     padding: 20px;
-    margin: 20px;
+    margin: auto;
     display: flex;
 }
 
@@ -91,6 +91,7 @@ a:hover{
     border-radius: 20px;
     padding: 5px;
     text-decoration: none;
+    margin: auto;
 }
 
 a{
@@ -102,7 +103,7 @@ a{
     border-radius: 20px;
     padding: 5px;
     text-decoration: none;
-
+    margin: auto;
 }
 
 div{
@@ -118,4 +119,5 @@ div{
     border-radius: 20px;
     padding: 5px;
     text-decoration:none;
+    margin: auto;
 }

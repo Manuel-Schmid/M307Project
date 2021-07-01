@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php
     require("../Models/CRUD.php");
     ?>
-    <h2 class = "form-title">Erfassen einer neuen Hypothek</h2>
+    <h2 class = "form-title text-center">Erfassen einer neuen Hypothek</h2>
     <?php if ($noError): ?>
 
         <p1 class=success>Speichern der Hypothek erfolgreich</p1>
