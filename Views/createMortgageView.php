@@ -1,4 +1,7 @@
 <?php
+require("../Models/CRUD.php");
+require('../Models/database.php');
+
 $noError = false;
 
 $errorList = [];
@@ -79,11 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </nav>
 </div>
 <div class="wrapper">
-    <?php
-    require("../Models/CRUD.php");
-    require ("../Controllers/Utils.php");
-    ?>
     <h2 class = "form-title text-center">Erfassen einer neuen Hypothek</h2>
+
     <?php if ($noError): ?>
         <p1 class=success>Speichern der Hypothek erfolgreich</p1>
     <?php else: ?>
@@ -95,59 +95,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </ul>
         <?php endif; ?>
     <?php endif; ?>
-
-    <br><br>
-
-    <form action="" method="post">
+    <br>
+    <form method="POST">
         <fieldset>
             <legend class="form-legend">Personenangaben</legend>
             <div class="form-group">
-            <label class="form-label" for="firstname">Vorname*</label>
-            <input type="text" id="firstname" name="firstname"><br>
+                <input type="hidden" name="action" value="insert">
+                <label class="form-label" for="firstname">Vorname*</label>
+                <input type="text" id="firstname" name="firstname"><br>
             </div>
             <div class="form-group">
-            <label  class="form-label" for="lastname">Nachname*</label>
-            <input type="text" id="lastname" name="lastname"><br>
+                <input type="hidden" name="action" value="insert">
+                <label class="form-label" for="lastname">Nachname*</label>
+                <input type="text" id="lastname" name="lastname"><br>
             </div>
             <div class="form-group">
-            <label class="form-label" for="email">E-Mail*</label>
-            <input type="text" id="email" name="email"><br>
+                <input type="hidden" name="action" value="insert">
+                <label class="form-label" for="email">E-Mail*</label>
+                <input type="text" id="email" name="email"><br>
             </div>
             <div class="form-group">
-            <label class="form-label" for="phone">Telefon*</label>
-            <input type="text" id="phone" name="phone"><br>
+                <input type="hidden" name="action" value="insert">
+                <label class="form-label" for="phone">Telefon*</label>
+                <input type="text" id="phone" name="phone"><br>
             </div>
-            <div class="form-group">
         </fieldset>
         <fieldset>
-            <legend class="form-legend" >Hypothekangaben</legend>
-
+            <legend class="form-legend">Hypothekangaben</legend>
             <div class="form-group">
-            <label class="form-label" for="riskLevel">Risiko Level*</label>
-            <select id="riskLevel" name="riskLevel">
-                <?php
-                $levels = getAllRiskLevels();
-                for ($i = 0; $i < count($levels); $i++) {
-                    $val = $levels[$i]['riskLevel'];
-                    echo "<option value ='$val'>" . $val . "</option>";
-                }
-                ?>
-            </select><br>
+                <input type="hidden" name="action" value="insert">
+                <label class="form-label" for="riskLevel">Risiko Level*</label>
+                <select id="riskLevel" name="riskLevel">
+                    <script src="../Controllers/dateHandling.js"></script>
+                    <?php
+                    $levels = getAllRiskLevels();
+                    for ($i = 0; $i < count($levels); $i++) {
+                        $val = $levels[$i]['riskLevel'];
+                        echo '<option value ="'.$val.'" onchange="updateEndDate('.$val.')">'.$val.'</option>';
+                    }
+                    ?>
+                </select><br>
             </div>
             <div class="form-group">
-            <label class="form-label" for="mortgagePackage">Hypothek Paket*</label>
-            <select id="mortgagePackage" name="mortgagePackage">
-                <?php
-                $packages = getAllPackages();
-                for ($i = 0; $i < count($packages); $i++) {
-                    $packageName = $packages[$i]['packageName'] . " (" . $packages[$i]['percentage'] . "%)";
-                    echo "<option value ='$packageName'>" . $packageName . "</option>";
-                }
-                ?>
-            </select><br>
+                <input type="hidden" name="action" value="insert">
+                <label class="form-label" for="mortgagePackage">Hypothek Paket*</label>
+                <select id="mortgagePackage" name="mortgagePackage">
+                    <?php
+                    $packages = getAllPackages();
+                    for ($i = 0; $i < count($packages); $i++) {
+                        $packageName = $packages[$i]['packageName'] . " (" . $packages[$i]['percentage'] . "%)";
+                        echo "<option value ='$packageName'>" . $packageName . "</option>";
+                    }
+                    ?>
+                </select><br><br>
             </div>
         </fieldset>
-        <p>* sind Pflichfelder</p>
 
         <fieldset>
             <legend class="form-legend">Rückzahlung</legend>
@@ -155,21 +157,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label class="form-label" for="firstname">Rückzahlungs-Datum:
                     <?php
                     global $val;
-                    $startDate = new DateTime('now');
-                    $fdate = date('d.m.Y', $startDate->getTimestamp());
-                    echo getRepayDate($fdate, $val);
-
-//                    $fdate = formatDate($date);
-//                    echo getRepayDate($date, $val);
+                    $startDate = date('Y-m-d');
+                    $riskID = getRiskID($val);
+                    $endDate = getRepayDate($startDate, $riskID);
+                    echo $endDate;
                     ?>
                 </label>
             </div>
         </fieldset>
+       <p>* sind Pflichfelder</p>
 
         <div class="form-actions">
-            <input class="menu-button" type="submit" value="Anmelden">
+            <input class="menu-button" type="submit" value="Erfassen">
         </div>
     </form>
+
+    <?php
+    $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+    $countrycode = filter_input(INPUT_POST, "countrycode", FILTER_SANITIZE_STRING);
+    $district = filter_input(INPUT_POST, "district", FILTER_SANITIZE_STRING);
+    $population = filter_input(INPUT_POST, "population", FILTER_SANITIZE_STRING);
+    ?>
+  
 </div>
 </body>
 </html>

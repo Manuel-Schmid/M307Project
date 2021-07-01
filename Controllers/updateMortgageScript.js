@@ -29,8 +29,4 @@ function saveChanges(id, mortgageID, newValue) {
     // document.write('<?php updateMortgageItem('+id+','+mortgageID+','+newValue+'); ?> ');
 }
 
-function test() {
-
-}
-
  // updateMortgageItem($id, $mortgageID, $value)
