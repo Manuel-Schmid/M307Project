@@ -11,7 +11,7 @@
 </head>
 <body>
 <div>
-    <h1 class="text-center">Hypothekarbank</h1>
+    <h1>Hypothekarbank</h1>
     <nav>
         <a href="Views/createMortgageView.php" class="menu-bar text-center">Leihe erfassen</a>
         <a href="Views/existingMortgagesView.php" class="menu-bar text-center">bestehende Leihen</a>

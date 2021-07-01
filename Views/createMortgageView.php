@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
 <div>
-    <h1 class="text-center">Hypothekarbank</h1>
+    <h1>Hypothekarbank</h1>
     <nav>
         <a href="createMortgageView.php" class="selected-menue-bar text-center">Leihe erfassen</a>
         <a href="existingMortgagesView.php" class="menu-bar text-center">bestehende Leihen</a>
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php
     require("../Models/CRUD.php");
     ?>
-    <h1 class = "form-title">Erfassen einer neuen Hypothek</h1>
+    <h2 class = "form-title">Erfassen einer neuen Hypothek</h2>
     <?php if ($noError): ?>
 
         <p1 class=success>Speichern der Hypothek erfolgreich</p1>
