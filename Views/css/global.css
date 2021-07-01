@@ -81,10 +81,14 @@ nav{
 }
 
 a:hover{
+    width: 90%;
     background-color: #04aaaa;
+    font-size: 20px;
     color: white;
+    border: solid;
     border-radius: 20px;
     padding: 20px;
+    margin: 20px;
 }
 
 div{
