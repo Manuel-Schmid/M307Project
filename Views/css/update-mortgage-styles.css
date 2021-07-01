@@ -8,6 +8,10 @@
     padding-left: 22px;
 }
 
+#mortgage tr {
+
+}
+
 
 .list {
     width: 22%;
@@ -26,4 +30,21 @@
 
 .edit-btn {
     width: 98%;
+}
+
+.small-button {
+    background: transparent;
+    width: 48%;
+    padding-left: 0;
+    margin: 0;
+    border-style: none;
+    font-size: 20px;
+}
+
+.small-button:hover {
+    font-size: 24px;
+}
+
+.small-button p {
+    margin: 0;
 }
