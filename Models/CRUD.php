@@ -72,8 +72,9 @@ function getRepayDate($startDate, $riskID) : string{
     $statement->bindValue(':riskID', $riskID);
     $statement->execute();
     $riskLevel = $statement->fetchAll();
-    $days = 480 + $riskLevel[0][0];
-    return date('d.m.Y', date('d.m.Y', strtotime($startDate)) . ' + '.$days.' days');
+    $days = 480 + $riskLevel[0][0]; // 240
+    $Date = date('Y-m-d', strtotime($startDate . ' + '.$days.' days'));
+    return date("d.m.Y", strtotime($Date));
 }
 
 // CREATE

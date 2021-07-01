@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </nav>
 </div>
 <div class="wrapper">
-    <h1 class="form-title">Erfassen einer neuen Hypothek</h1>
+    <h2 class = "form-title text-center">Erfassen einer neuen Hypothek</h2>
 
     <?php if ($noError): ?>
         <p1 class=success>Speichern der Hypothek erfolgreich</p1>
@@ -126,11 +126,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="hidden" name="action" value="insert">
                 <label class="form-label" for="riskLevel">Risiko Level*</label>
                 <select id="riskLevel" name="riskLevel">
+                    <script src="../Controllers/dateHandling.js"></script>
                     <?php
                     $levels = getAllRiskLevels();
                     for ($i = 0; $i < count($levels); $i++) {
                         $val = $levels[$i]['riskLevel'];
-                        echo "<option value ='$val'>" . $val . "</option>";
+                        echo '<option value ="'.$val.'" onchange="updateEndDate('.$val.')">'.$val.'</option>';
                     }
                     ?>
                 </select><br>
@@ -149,11 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </select><br><br>
             </div>
         </fieldset>
-        <?php $date = date('Y-m-d');
-        echo "<p>$date</p>";
-        $repayDay = getRepayDate($date, 2); //Hier muss irgendwelche Hexerei angewendet werden, damit man aus den selects die riskID bekommt...
-        echo "<p>$repayDay</p>";
-        ?>
+
         <fieldset>
             <legend class="form-legend">Rückzahlung</legend>
             <div class="form-group">
@@ -162,13 +159,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     global $val;
                     $startDate = date('Y-m-d');
                     $riskID = getRiskID($val);
-                    var_dump($riskID);
                     $endDate = getRepayDate($startDate, $riskID);
-                    var_dump($endDate);
-//                    echo '<p>'.$endDate.'<p>';
-
-//                    $fdate = formatDate($date);
-//                    echo getRepayDate($date, $val);
+                    echo $endDate;
                     ?>
                 </label>
             </div>
