@@ -38,6 +38,14 @@ function getRiskLevel($riskID): string
     return $riskLevel[0][0];
 }
 
+function getAllRiskLevels(): array
+{
+    global $pdo;
+    $statement = $pdo->prepare('SELECT * FROM riskRanking');
+    $statement->execute();
+    return $statement->fetchAll();
+}
+
 function getPackageName($packageID): string
 {
     global $pdo;
