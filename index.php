@@ -15,7 +15,6 @@
     <nav>
         <a href="Views/createMortgageView.php" class="menu-bar text-center">Leihe erfassen</a>
         <a href="Views/existingMortgagesView.php" class="menu-bar text-center">bestehende Leihen</a>
-        <a href="Views/updateMortgageView.php" class="menu-bar text-center">Leihen bearbeiten</a>
     </nav>
 </div>
 
