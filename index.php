@@ -12,9 +12,11 @@
 <body>
 <div>
     <h1 class="text-center">Hypothekarbank</h1>
-    <button class="menu-button text-center">Verleihe erfassen</button>
-    <button class="menu-button text-center">Bestehende Leihen</button>
-    <button class="menu-button text-center">Leihen bearbeiten</button>
+    <nav>
+        <a href="Views/createMortgageView.php" class="menu-bar text-center">Leihe erfassen</a>
+        <a href="Views/existingMortgagesView.php" class="menu-bar text-center">bestehende Leihen</a>
+        <a href="Views/updateMortgageView.php" class="menu-bar text-center">Leihen bearbeiten</a>
+    </nav>
 </div>
 
 </body>

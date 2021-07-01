@@ -69,6 +69,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Hypothek erfassen</title>
 </head>
 <body>
+
+<div>
+    <h1 class="text-center">Hypothekarbank</h1>
+    <nav>
+        <a href="createMortgageView.php" class="selected-menue-bar text-center">Leihe erfassen</a>
+        <a href="existingMortgagesView.php" class="menu-bar text-center">bestehende Leihen</a>
+        <a href="updateMortgageView.php" class="menu-bar text-center">Leihen bearbeiten</a>
+    </nav>
+</div>
 <div class="wrapper">
     <?php
     require("../Models/CRUD.php");
@@ -149,7 +158,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="form-actions">
             <input class="menu-button" type="submit" value="Anmelden">
         </div>
-
     </form>
 </div>
 </body>

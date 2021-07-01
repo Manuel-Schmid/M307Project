@@ -12,6 +12,16 @@
     <title>Hypothek bearbeiten</title>
 </head>
 <body>
+
+<div>
+    <h1 class="text-center">Hypothekarbank</h1>
+    <nav>
+        <a href="createMortgageView.php" class="menu-bar text-center">Leihe erfassen</a>
+        <a href="existingMortgagesView.php" class="menu-bar text-center">bestehende Leihen</a>
+        <a href="updateMortgageView.php" class="selected-menue-bar text-center">Leihen bearbeiten</a>
+    </nav>
+</div>
+
 <?php
 $mortgageID = $_GET['mortgageID'];
 require("../Models/CRUD.php");
