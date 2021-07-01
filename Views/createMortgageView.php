@@ -40,14 +40,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif( ! preg_match('/^[\+ 0-9]+$/', $phone)) {
         $errorList[] = 'Die Telefonnummer "' . $phone . '" ist ungültig.';
     }
-
-    if($firstname === '') {
-        $errorList[] = 'Bitte geben Sie einen Vornamen ein.';
-    }
-
-    if($mortgagePackage === '') {
-        $errorList[] = 'Bitte geben Sie einen Vornamen ein.';
-    }
+//
+//    if($riskLevel === '') {
+//        $errorList[] = 'Bitte wählen Sie ein Risikolevel.';
+//    }
+//
+//    if($mortgagePackage === '') {
+//        $errorList[] = 'Bitte wählen Sie ein Hypothek-Paket.';
+//    }
 
     if(count($errorList) === 0) {
         $noError = true;
@@ -86,7 +86,7 @@ require("../Models/CRUD.php");
     <?php if(count($errorList) > 0): ?>
         <ul class="errors">
             <?php foreach($errorList as $error): ?>
-                <li><?= $errorList ?></li>
+                <li><?= $error ?></li>
             <?php endforeach; ?>
         </ul>
     <?php endif; ?>
@@ -100,7 +100,6 @@ require("../Models/CRUD.php");
         <legend>Personenangaben</legend>
         <label for="firstname">Vorname*</label>
         <input type="text" id="firstname" name="firstname"><br>
-
 
         <label for="lastname">Nachname*</label>
         <input type="text" id="lastname" name="lastname"><br>
