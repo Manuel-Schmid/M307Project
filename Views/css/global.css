@@ -37,9 +37,9 @@ button{
     padding: 8px;
 }
 
-/*.list tr:nth-child(even){*/
-/*    background-color: #f2f2f2;*/
-/*}*/
+.list tr{
+    background-color: #f2f2f2;
+}
 
 /*.list tr:nth-child(odd){*/
 /*    background-color: white;*/
