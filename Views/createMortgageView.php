@@ -25,11 +25,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($firstName === '') {
         $errorList[] = 'Bitte geben Sie einen Vornamen ein.';
+    }else if(preg_match('/[^a-zA-ZäöüÄÖÜéèàçÇÉÈÀôâîûêñãõÔÂÎÛÊÑÃÕ]/', $lastName)) {
+        $errorList[] = 'Der Vorname ist ungültig';
     }
 
     if ($lastName === '') {
         $errorList[] = 'Bitte geben Sie einen Nachname ein.';
-    }
+    }else if(preg_match('/[^a-zA-ZäöüÄÖÜéèàçÇÉÈÀôâîûêñãõÔÂÎÛÊÑÃÕ]/', $lastName)) {
+    $errorList[] = 'Der Nachname ist ungültig';
+}
 
     if ($email === '') {
         $errorList[] = 'Bitte geben Sie eine Email ein.';
