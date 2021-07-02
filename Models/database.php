@@ -1,6 +1,6 @@
 <?php
-$dsn = 'mysql:host=213.196.190.205;dbname=M307DB';
-$username = 'M307admin';
+$dsn = 'mysql:host=localhost;dbname=m307db';
+$username = 'HibKanbAdmin';
 $password = 'e507y';
 
 try {
@@ -11,3 +11,4 @@ try {
     echo $error_message;
     exit();
 }
+
