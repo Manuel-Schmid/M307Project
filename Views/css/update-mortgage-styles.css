@@ -1,66 +1,7 @@
-.menu-button{
-    width: 30%;
-    color: white;
-    background-color: #038a8a;
-    padding: 10px;
-    border-radius: 20px;
-}
-
-button:hover{
-    color: white;
-    background-color: #04aaaa;
-    border-radius: 15px;
-}
-
-#mortgage th {
-    background-color: #04aaaa;
-    padding-left: 20px;
-}
-
-.form-left{
-    width: 50%;
-    position: absolute;
-    height: 50%;
-    left: auto;
-}
-
-.form-right{
-    width: 50%;
-    position: absolute;
-    height: 100%;
-    right: auto;
-}
-
-.selected-menue-bar{
-    width: 50%;
-    background-color: #535353;
-    font-size: 20px;
-    color: white;
-    border: solid;
-    border-radius: 40px;
-    padding: 10px;
-}
-
-.tab-form{
-    tab-size: 30;
-    -moz-tab-size:30;
-    -ms-tab-size: 30;
-    white-space: pre;
-}
-
-fieldset{
-    border: solid;
-    border-color: black;
-    border-radius: 20px;
-
-}
-
 input{
-    border: solid;
-    border-color: black;
+    border: solid black;
     border-radius: 15px;
 }
-
 
 .tab-ajust{
     tab-size:20cm;
@@ -68,6 +9,7 @@ input{
     -ms-tab-size: 20cm;
     white-space: pre;
 }
+
 h1{
     font-size: 80px;
     text-align: center;
@@ -77,55 +19,30 @@ div{
     margin: 10px;
 }
 
-.h2-form-left{
-    font-size: 30px;
-    font-weight: bold;
-}
-
-
-
 #mortgage td{
+    width: 28%;
     font-size: 15px;
-    padding-left: 7px;
+    padding-left: 10px;
 }
 
-#mortgage tr {
+#mortgage th {
+    background-color: #04aaaa;
+    padding-left: 10px;
 }
-
 
 .list {
-    width: 60%;
+    margin-top: 50px;
+    width: 55%;
 }
 
 .input-field {
     font-size: 15px;
-    width: 90%;
+    width: 99%;
     padding: 5px 20px 5px 6px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-}
-
-.edit-btn {
-    width: 98%;
-}
-
-.small-button {
-    background: transparent;
-    width: 48%;
-    padding-left: 0;
-    margin: 0;
-    border-style: none;
-    font-size: 20px;
-}
-
-.small-button:hover {
-    font-size: 24px;
-}
-
-.small-button p {
-    margin: 0;
 }
 
 .noBorder {
@@ -140,6 +57,14 @@ div{
 }
 
 #save {
-    padding: 15px;
+    padding: 5px 25px 5px 25px;
+}
 
+.menu-btn {
+    padding: 7px 30px 7px 30px;
+}
+@media (min-width: 1800px) {
+    .menu-btn {
+        margin-left: 8px;
+    }
 }

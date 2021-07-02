@@ -25,8 +25,8 @@
 <div>
     <h1>Hypothekarbank</h1>
     <nav>
-        <a href="createMortgageView.php" class="menu-bar text-center">Leihe erfassen</a>
-        <a href="existingMortgagesView.php" class="menu-bar text-center">bestehende Leihen</a>
+        <a href="createMortgageView.php" class="menu-bar menu-right text-center">Hypothek erfassen</a>
+        <a href="existingMortgagesView.php" class="menu-bar menu-left text-center">Hypotheken-Übersicht</a>
     </nav>
 </div>
 
@@ -52,7 +52,7 @@ $mortgage = getMortgage($mortgageID);
         <td><input name="<?= $var ?>" id="firstName-input" type="text" class="input-field" placeholder="<?= $var ?>">
         </td>
         <td>
-            <button id="firstName-btn" class="edit-btn">Speichern</button>
+            <button id="firstName-btn" class="menu-btn">Speichern</button>
         </td>
     </tr>
     <script>
@@ -71,7 +71,7 @@ $mortgage = getMortgage($mortgageID);
         <td><input name="<?= $var ?>" id="lastName-input" type="text" class="input-field" placeholder="<?= $var ?>">
         </td>
         <td>
-            <button id="lastName-btn" class="edit-btn">Speichern</button>
+            <button id="lastName-btn" class="menu-btn">Speichern</button>
         </td>
     </tr>
     <script>
@@ -89,7 +89,7 @@ $mortgage = getMortgage($mortgageID);
         <td id="email"><?= $var ?></td>
         <td><input name="<?= $var ?>" id="email-input" type="text" class="input-field" placeholder="<?= $var ?>"></td>
         <td>
-            <button id="email-btn" class="edit-btn">Speichern</button>
+            <button id="email-btn" class="menu-btn">Speichern</button>
         </td>
     </tr>
     <script>
@@ -109,7 +109,7 @@ $mortgage = getMortgage($mortgageID);
         <td><input name="<?= $var ?>" id="phoneNumber-input" type="text" class="input-field" placeholder="<?= $var ?>">
         </td>
         <td>
-            <button id="phoneNumber-btn" class="edit-btn">Speichern</button>
+            <button id="phoneNumber-btn" class="menu-btn">Speichern</button>
         </td>
     </tr>
     <script>
@@ -139,7 +139,7 @@ $mortgage = getMortgage($mortgageID);
                 ?>
             </select>
         <td>
-            <button id="package-btn" class="edit-btn">Speichern</button>
+            <button id="package-btn" class="menu-btn">Speichern</button>
         </td>
     </tr>
     <script>
@@ -162,7 +162,7 @@ $mortgage = getMortgage($mortgageID);
                 <option value="Zurückgezahlt">Zurückgezahlt</option>
             </select>
         <td>
-            <button id="repaymentStatus-btn" class="edit-btn">Speichern</button>
+            <button id="repaymentStatus-btn" class="menu-btn">Speichern</button>
         </td>
     </tr>
     <script>
@@ -190,7 +190,7 @@ $mortgage = getMortgage($mortgageID);
         <td></td>
         <td></td>
         <td>
-            <button id="save" class="edit-btn">Alle speichern</button>
+            <button id="save" class="menu-btn">Alle speichern</button>
         </td>
     </tr>
     <script>

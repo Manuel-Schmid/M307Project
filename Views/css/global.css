@@ -37,7 +37,9 @@ button{
     padding: 8px;
 }
 
-.list tr:nth-child(even){background-color: #f2f2f2;}
+.list tr:nth-child(even){
+    background-color: #f2f2f2;
+}
 
 .list th {
     padding-top: 12px;
@@ -50,74 +52,65 @@ button{
     background-color: #04AA6D;
 }
 
-.edit-btn {
-    background-color: #038a8a;
-    border-radius: 20px;
-    border-color: #038a8a;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-
-
-    /*font-size: 16px;*/
-}
-
-.edit-btn:hover {
-    background-color: #036767;
-}
 
 .text-center {
     text-align: center;
 }
 
 nav{
-    width: 90%;
-    background-color: #038a8a;
+    padding: 6px;
+    width: 70%;
+    background-color: #027c7c;
     font-size: 20px;
     color: white;
     border: solid;
-    border-radius: 20px;
-    padding: 20px;
+    border-radius: 31px;
     margin: auto;
     display: flex;
 }
 
-a:hover{
-    width:45%;
-    background-color: #04aaaa;
+.menu-bar{
+    width:50%;
+    background-color: #038a8a;
     font-size: 20px;
     color: white;
-    border: solid;
-    border-radius: 20px;
-    padding: 5px;
+    padding: 20px;
     text-decoration: none;
     margin: auto;
 }
 
-a{
-    width:45%;
-    background-color: #038a8a;
-    font-size: 20px;
-    color: white;
-    border: solid;
-    border-radius: 20px;
-    padding: 5px;
-    text-decoration: none;
-    margin: auto;
+.menu-left {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.menu-right {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.menu-bar:hover{
+    background-color: #04aaaa;
+    -webkit-box-shadow: inset 0px 0px 10px -5px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 0px 10px -5px rgba(0,0,0,0.5);
 }
 
 div{
     margin: 20px;
 }
 
-.selected-menue-bar{
-    width:45%;
-    background-color:darkgray;
-    font-size: 20px;
-    color: black;
-    border: solid;
-    border-radius: 20px;
-    padding: 5px;
-    text-decoration:none;
-    margin: auto;
+.menu-btn {
+    background-color: #038a8a;
+    padding: 10px 50px 10px 50px;
+    border-radius: 5px;
+    border-color: #038a8a;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.menu-btn:hover {
+    background-color: #036767;
+    -webkit-box-shadow: inset 0px 0px 10px -5px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 0px 10px -5px rgba(0,0,0,0.5);
 }

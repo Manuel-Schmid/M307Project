@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="css/existing-mortgages-styles.css">
     <link rel="icon" href="../Media/favicon.ico" type="image/x-icon">
     <style> @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');</style>
-    <title>Bestehende Hypotheken</title>
+    <title>Hypotheken-Übersicht</title>
 </head>
 <body>
 
 <div>
     <h1>Hypothekarbank</h1>
     <nav>
-        <a href="createMortgageView.php" class="menu-bar text-center">Leihe erfassen</a>
-        <a href="existingMortgagesView.php" class="selected-menue-bar text-center">bestehende Leihen</a>
+        <a href="createMortgageView.php" class="menu-bar menu-right text-center">Hypothek erfassen</a>
+        <a href="existingMortgagesView.php" class="menu-bar menu-left text-center">Hypotheken-Übersicht</a>
     </nav>
 </div>
 
@@ -48,10 +48,10 @@
         echo "<td>" . $mortgages[$i]['phoneNumber'] . "</td>";
         echo "<td>" . formatDate($mortgages[$i]['startDate']) . "</td>";
         echo "<td>" . formatRepaymentStatus($mortgages[$i]['repaymentStatus']) . "</td>";
-        echo "<td>" . getEmoji($mortgages[$i]['startDate'],$mortgages[$i]['FK_riskID']) . "</td>";
+        echo "<td>" . getEmoji($mortgages[$i]['startDate'],$mortgages[$i]['FK_riskID'], $mortgages[$i]['repaymentStatus']) . "</td>";
         echo "<td>" . getRiskLevel($mortgages[$i]['FK_riskID']) . "</td>";
         echo "<td>" . getPackageName($mortgages[$i]['FK_packageID']) . "</td>";
-        echo '<td><a class="edit-btn" href="updateMortgageView.php?mortgageID=' .$mortgages[$i]['mortgageID'].'">Bearbeiten</a></td>';
+        echo '<td><a class="menu-btn" href="updateMortgageView.php?mortgageID=' .$mortgages[$i]['mortgageID'].'">Bearbeiten</a></td>';
         echo "</tr>";
     }
     ?>

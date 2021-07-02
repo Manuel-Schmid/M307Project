@@ -78,48 +78,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div>
     <h1>Hypothekarbank</h1>
     <nav>
-        <a href="createMortgageView.php" class="selected-menue-bar text-center">Leihe erfassen</a>
-        <a href="existingMortgagesView.php" class="menu-bar text-center">bestehende Leihen</a>
+        <a href="createMortgageView.php" class="menu-bar menu-right text-center">Hypothek erfassen</a>
+        <a href="existingMortgagesView.php" class="menu-bar menu-left text-center">Hypotheken-Übersicht</a>
     </nav>
 </div>
+
 <div class="wrapper">
     <h2 class = "form-title text-center">Erfassen einer neuen Hypothek</h2>
 
     <?php if ($noError): ?>
-        <p1 class=success>Speichern der Hypothek erfolgreich</p1>
+        <div style="text-align: center;padding-top: 92px;margin-bottom: 0px;width: 100%;">
+            <p1 class=success>Speichern der Hypothek erfolgreich</p1>
+        </div>
     <?php else: ?>
         <?php if (count($errorList) > 0): ?>
-            <ul class="errors">
-                <?php foreach ($errorList as $error): ?>
-                    <li><?= $error ?></li>
-                <?php endforeach; ?>
-            </ul>
+            <div style="padding-top: 92px;margin-bottom: 0px;width: 100%;">
+                <ul class="errors">
+                    <?php foreach ($errorList as $error): ?>
+                        <li><?= $error ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
         <?php endif; ?>
     <?php endif; ?>
     <br>
-    <form method="POST">
+    <form method="POST" id="form">
         <fieldset>
             <legend class="form-legend">Personenangaben</legend>
-            <div class="form-group">
-                <input type="hidden" name="action" value="insert">
-                <label class="form-label" for="firstname">Vorname*</label>
-                <input type="text" id="firstname" name="firstname"><br>
-            </div>
-            <div class="form-group">
-                <input type="hidden" name="action" value="insert">
-                <label class="form-label" for="lastname">Nachname*</label>
-                <input type="text" id="lastname" name="lastname"><br>
-            </div>
-            <div class="form-group">
-                <input type="hidden" name="action" value="insert">
-                <label class="form-label" for="email">E-Mail*</label>
-                <input type="text" id="email" name="email"><br>
-            </div>
-            <div class="form-group">
-                <input type="hidden" name="action" value="insert">
-                <label class="form-label" for="phone">Telefon*</label>
-                <input type="text" id="phone" name="phone"><br>
-            </div>
+            <section class="image-section">
+                <div style="width: 100%">
+                    <img id="person-image" src="../Media/person.png" alt="Neutral image of a Person">
+                </div>
+            </section>
+            <section class="text-section">
+                <div class="input-list">
+                    <div class="form-group">
+                        <input type="hidden" name="action" value="insert">
+                        <label class="form-label" for="firstname">Vorname*</label>
+                        <input type="text" id="firstname" name="firstname"><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="action" value="insert">
+                        <label class="form-label" for="lastname">Nachname*</label>
+                        <input type="text" id="lastname" name="lastname"><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="action" value="insert">
+                        <label class="form-label" for="email">E-Mail*</label>
+                        <input type="text" id="email" name="email"><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="action" value="insert">
+                        <label class="form-label" for="phone">Telefon*</label>
+                        <input type="text" id="phone" name="phone"><br>
+                    </div>
+                </div>
+            </section>
         </fieldset>
 
         <fieldset>
@@ -169,7 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        <p>* Pflichfelder</p>
 
         <div class="form-actions">
-            <input class="menu-button" type="submit" value="Erfassen">
+            <input class="menu-btn" type="submit" value="Erfassen">
         </div>
     </form>
 

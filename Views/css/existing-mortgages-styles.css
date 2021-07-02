@@ -2,31 +2,13 @@
     background-color: #04aaaa;
 }
 
-.form-left{
-    width: 50%;
-    position: absolute;
-    height: 50%;
-    left: auto;
-}
-
-.form-right{
-    width: 50%;
-    position: absolute;
-    height: 100%;
-    right: auto;
-}
-
-
 fieldset{
-    border: solid;
-    border-color: black;
+    border: solid black;
     border-radius: 20px;
-
 }
 
 input{
-    border: solid;
-    border-color: black;
+    border: solid black;
     border-radius: 15px;
 }
 
@@ -40,18 +22,14 @@ div{
     margin: 10px;
 }
 
-.h2-form-left{
-    font-size: 30px;
-    font-weight: bold;
-}
 .list {
+    margin-top: 50px;
     margin-bottom: 60px;
     width: 90%;
 }
 
 @media (min-width: 1000px) {
     .list {
-        margin-bottom: 60px;
         width: 70%;
     }
 }
@@ -66,4 +44,7 @@ button:hover{
 #mortgage th{
     background-color: #04aaaa;
     padding-left: 20px;
+}
+.menu-btn {
+    padding: 10px 20px 10px 20px;
 }
