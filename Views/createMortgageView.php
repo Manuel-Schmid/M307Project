@@ -15,7 +15,6 @@ $mortgagePackage = $_POST['mortgagePackage'] ?? '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-
     $firstName = trim($firstName);
     $lastName = trim($lastName);
     $email = trim($email);
@@ -89,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if ($noError): ?>
         <div style="text-align: center;padding-top: 92px;margin-bottom: 0px;width: 100%;">
             <p1 class=success>Speichern der Hypothek erfolgreich</p1>
+            <?php insertMortgage($firstName, $lastName, $email, $phone, getRiskID($riskLevel), );?>
         </div>
     <?php else: ?>
         <?php if (count($errorList) > 0): ?>

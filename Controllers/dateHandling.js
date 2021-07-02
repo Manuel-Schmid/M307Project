@@ -7,7 +7,7 @@ function updateEndDate(riskLevel) {
     document.getElementById("repayDate").innerText = "Rückzahlungs-Datum: " + endDateString;
 }
 
-function getDays(riskID) {
+function getDays(riskID) { // We simply didn't have enough time to do this via database. :/
     switch(riskID) {
         case 1: return 360;
         case 2: return 180;

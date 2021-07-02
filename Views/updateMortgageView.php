@@ -1,10 +1,8 @@
 <?php
-//if (isset($_POST['data'])) {
-//    $data = $_POST['data'];
-//    print( "data is: $data" );
-//    return;
-//}
-//?>
+$noError = true;
+?>
+
+
 
 <!doctype html>
 <html lang="de">
@@ -16,6 +14,7 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/update-mortgage-styles.css">
     <script src="../Controllers/updateMortgageScript.js"></script>
+    <script src="../Controllers/validation.js"></script>
     <link rel="icon" href="../Media/favicon.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Hypothek bearbeiten</title>
@@ -30,11 +29,15 @@
     </nav>
 </div>
 
+<div id="message">
+    <div id="errors"></div>
+</div>
+<script>hideList()</script>
+
 <?php
 $mortgageID = $_GET['mortgageID'];
 require("../Models/CRUD.php");
 require("../Controllers/Utils.php");
-//updateMortgageItem("firstName", 2, "Manuel");
 $mortgage = getMortgage($mortgageID);
 ?>
 
@@ -59,8 +62,12 @@ $mortgage = getMortgage($mortgageID);
         $(document).ready(function () {
             $('#firstName-btn').click(function () {
                 let inputValue = document.getElementById("firstName-input").value;
-                checkEmpty(inputValue);
-                document.getElementById('firstName').innerText = inputValue;
+                checkEmpty(inputValue, "Vorname");
+                if(hasErrors()) {
+                    createErrorList();
+                } else {
+                    document.getElementById('firstName').innerText = inputValue;
+                }
             });
         });
     </script>
@@ -78,8 +85,12 @@ $mortgage = getMortgage($mortgageID);
         $(document).ready(function () {
             $('#lastName-btn').click(function () {
                 let inputValue = document.getElementById("lastName-input").value;
-                //checkEmpty(inputValue, "Nachname");
-                document.getElementById('lastName').innerText = inputValue;
+                checkEmpty(inputValue, "Nachname");
+                if(hasErrors()) {
+                    createErrorList();
+                } else {
+                    document.getElementById('lastName').innerText = inputValue;
+                }
             });
         });
     </script>
@@ -97,8 +108,12 @@ $mortgage = getMortgage($mortgageID);
             $('#email-btn').click(function () {
                 let inputValue = document.getElementById("email-input").value;
                 checkEmpty(inputValue, "E-Mail-Adresse");
-                checkAt();
-                document.getElementById('email').innerText = inputValue;
+                checkAt(inputValue.toString());
+                if(hasErrors()) {
+                    createErrorList();
+                } else {
+                    document.getElementById('email').innerText = inputValue;
+                }
             });
         });
     </script>
@@ -118,7 +133,11 @@ $mortgage = getMortgage($mortgageID);
                 let inputValue = document.getElementById("phoneNumber-input").value;
                 checkEmpty(inputValue, "Telefonnummer");
                 checkNumbers(inputValue);
-                document.getElementById('phoneNumber').innerText = inputValue;
+                if(hasErrors()) {
+                    createErrorList();
+                } else {
+                    document.getElementById('phoneNumber').innerText = inputValue;
+                }
             });
         });
     </script>
@@ -196,12 +215,46 @@ $mortgage = getMortgage($mortgageID);
     <script>
         $(document).ready(function () {
             $('#save').click(function () {
-                document.getElementById('firstName').innerText = document.getElementById("firstName-input").value;
-                document.getElementById('lastName').innerText = document.getElementById("lastName-input").value;
-                document.getElementById('email').innerText = document.getElementById("email-input").value;
-                document.getElementById('phoneNumber').innerText = document.getElementById("phoneNumber-input").value;
-                document.getElementById('package').innerText = document.getElementById("package-input").value;
-                document.getElementById('repaymentStatus').innerText = document.getElementById("repaymentStatus-input").value;
+                fnInput = document.getElementById("firstName-input").value;
+                checkEmpty(fnInput, "Vorname");
+                if(hasErrors()) {
+                    createErrorList();
+                } else {
+                    document.getElementById('firstName').innerText = fnInput;
+                }
+
+                lnInput = document.getElementById('lastName').value;
+                checkEmpty(lnInput, "Nachname");
+                if(hasErrors()) {
+                    createErrorList();
+                } else {
+                    document.getElementById('lastName').innerText = lnInput;
+                }
+
+                emailInput = document.getElementById("email-input").value;
+                checkEmpty(emailInput, "E-Mail-Adresse");
+                checkAt(inputValue.toString());
+                if(hasErrors()) {
+                    createErrorList();
+                } else {
+                    document.getElementById('email').innerText = emailInput;
+                }
+
+                pnInput = document.getElementById("phoneNumber-input").value;
+                checkEmpty(pnInput, "Telefonnummer");
+                checkNumbers(pnInput);
+                if(hasErrors()) {
+                    createErrorList();
+                } else {
+                    document.getElementById('phoneNumber').innerText = pnInput;
+                }
+
+                packageInput = document.getElementById("package-input").value
+                document.getElementById('package').innerText = packageInput;
+
+                rsInput = document.getElementById("repaymentStatus-input").value;
+                document.getElementById('repaymentStatus').innerText = rsInput;
+
             });
         });
     </script>

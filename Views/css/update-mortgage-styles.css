@@ -68,3 +68,28 @@ div{
         margin-left: 8px;
     }
 }
+
+#message {
+    padding-top: 92px;
+    margin-bottom: 0px;
+    width: 100%;
+}
+
+#errors {
+    width: 30%;
+    margin: auto;
+    border: 1px solid #E20404;
+    background: #FFF3F3;
+    color: #E20404;
+    padding: 1em;
+    border-radius: 4px;
+}
+
+#errors ul {
+
+}
+
+#errors li {
+    padding-left: 4px;
+    margin-left: 14px;
+}

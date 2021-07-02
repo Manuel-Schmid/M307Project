@@ -66,6 +66,16 @@ function getPackageName($packageID): string
     return $packageName[0][0];
 }
 
+function getPackageID($packageName): int
+{
+    global $pdo;
+    $statement = $pdo->prepare('SELECT packageID FROM M307DB.packages WHERE packageName = :packageName;');
+    $statement->bindValue(':packageName', $packageName);
+    $statement->execute();
+    $packageIDs = $statement->fetchAll();
+    return $packageIDs[0][0];
+}
+
 function getRepayDate($startDate, $riskID) : string{
     global $pdo;
     $statement = $pdo->prepare('SELECT changeRentalDays FROM M307DB.riskRanking WHERE riskID = :riskID;');
