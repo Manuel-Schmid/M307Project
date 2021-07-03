@@ -37,9 +37,13 @@ button{
     padding: 8px;
 }
 
-.list tr:nth-child(even){
+.list tr{
     background-color: #f2f2f2;
 }
+
+/*.list tr:nth-child(odd){*/
+/*    background-color: white;*/
+/*}*/
 
 .list th {
     padding-top: 12px;
